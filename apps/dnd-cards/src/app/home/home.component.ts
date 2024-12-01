@@ -1,4 +1,4 @@
-﻿import { Component, DestroyRef, inject } from '@angular/core';
+﻿import { Component, inject } from '@angular/core';
 import { ISignedUser } from '@dnd-cards/shared/interfaces';
 import { AuthenticationService } from '@dnd-cards/client/auth';
 import { Subscription } from 'rxjs';

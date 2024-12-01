@@ -15,6 +15,14 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
+"@angular-architects/ddd@^19.0.1":
+  version "19.0.1"
+  resolved "https://registry.yarnpkg.com/@angular-architects/ddd/-/ddd-19.0.1.tgz#a94e6be591257b17a3a4616c5ae8e589323c9762"
+  integrity sha512-T6ZQe6w0BMKhbrMhUtOUrSf8EMLRBecbZugZ6H9nyMSlZedNZct1ca7oj6AN5xCDZfd0d6EQObiEBUeKHSSflQ==
+  dependencies:
+    "@ngrx/schematics" "^18.0.0"
+    "@phenomnomnominal/tsquery" "^5.0.1"
+
 "@angular-devkit/architect@0.1802.12":
   version "0.1802.12"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1802.12.tgz#096f8e9cf71f8848c6f0172c03f3f1135509e133"
@@ -3190,6 +3198,11 @@
   dependencies:
     uuid "9.0.1"
 
+"@ngrx/schematics@^18.0.0":
+  version "18.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-18.1.1.tgz#4f811aae1e7c601e2407e99bef091afe94d01058"
+  integrity sha512-6EexKNoTNzwHf8AIXcioOm11l6rTZ8WUpGYiPTSW2I/Pn5CsjCBDwbBDEHJZ1RqGoCXpunZn6adH63A2V8V4Sg==
+
 "@ngtools/webpack@18.2.12":
   version "18.2.12"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-18.2.12.tgz#876a09f2b3acb0d09d93e906a9ba330d92703568"
@@ -3850,7 +3863,7 @@
   resolved "https://registry.yarnpkg.com/@phc/format/-/format-1.0.0.tgz#b5627003b3216dc4362125b13f48a4daa76680e4"
   integrity sha512-m7X9U6BG2+J+R1lSOdCiITLLrxm+cWlNI3HUFA92oLO77ObGNzaKdh8pMLqdZcshtkKuV84olNNXDfMc4FezBQ==
 
-"@phenomnomnominal/tsquery@~5.0.1":
+"@phenomnomnominal/tsquery@^5.0.1", "@phenomnomnominal/tsquery@~5.0.1":
   version "5.0.1"
   resolved "https://registry.npmjs.org/@phenomnomnominal/tsquery/-/tsquery-5.0.1.tgz"
   integrity sha512-3nVv+e2FQwsW8Aw6qTU6f+1rfcJ3hrcnvH/mu9i8YhxO+9sqbOfpL8m6PbET5+xKOlz/VSbp0RoYWYCtIsnmuA==
