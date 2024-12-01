@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@dnd-cards/client/alert": ["libs/client/alert/src/index.ts"],
+      "@dnd-cards/client/auth": ["libs/client/auth/src/index.ts"],
+      "@dnd-cards/server/db": ["libs/server/db/src/index.ts"],
+      "@dnd-cards/server/auth": ["libs/server/auth/src/index.ts"],
+      "@dnd-cards/server/core": ["libs/server/core/src/index.ts"],
+      "@dnd-cards/server/spell": ["libs/server/spell/src/index.ts"],
+      "@dnd-cards/server/user": ["libs/server/user/src/index.ts"],
+      "@dnd-cards/shared/interfaces": ["libs/shared/interfaces/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

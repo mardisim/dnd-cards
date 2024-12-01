@@ -1,0 +1,20 @@
+import { Spell } from '@dnd-cards/server/db';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+@Injectable()
+export class SpellService {
+  constructor(
+    @InjectRepository(Spell)
+    private readonly spellRepository: Repository<Spell>,
+  ) {}
+
+  async getAllSpells(): Promise<Spell[]> {
+    return await this.spellRepository.find({
+      relations: {
+        school: true,
+      },
+    });
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "notebook.formatOnSave.enabled": false,
+    "editor.codeActionsOnSave": {
+        "source.removeUnusedImports": "explicit"
+    }
+}

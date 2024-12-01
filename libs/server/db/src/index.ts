@@ -1,0 +1,7 @@
+export * from './lib/db.module';
+export * from './lib/dto/user.dto'
+export * from './lib/dto/school.dto'
+export * from './lib/dto/spell.dto'
+export * from './lib/entities/user.entity'
+export * from './lib/entities/spell.entity'
+export * from './lib/entities/school.entity'
