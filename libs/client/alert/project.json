@@ -4,7 +4,7 @@
   "sourceRoot": "libs/client/alert/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["scope:client"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

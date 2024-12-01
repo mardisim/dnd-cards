@@ -1,6 +1,6 @@
+import { ILoginUser, IRegisterUser } from '@dnd-cards/shared/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
-import { ILoginUser, IRegisterUser } from '../../../../../shared/interfaces/src/lib/interfaces/user.interface';
 
 export class LoginDto implements ILoginUser {
   @ApiProperty()

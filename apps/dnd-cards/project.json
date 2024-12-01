@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/dnd-cards/src",
-  "tags": [],
+  "tags": ["scope:client"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -142,6 +142,10 @@
         }
       },
       "defaultConfiguration": "production"
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/dnd-cards/Dockerfile . -t dnd-cards"
     }
   }
 }
