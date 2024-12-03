@@ -14,6 +14,17 @@ export class SpellService {
     return await this.spellRepository.find({
       relations: {
         school: true,
+        dndClasses: true,
+      },
+    });
+  }
+
+  async getSpell(id: number): Promise<Spell | null> {
+    return await this.spellRepository.findOne({
+      where: { id },
+      relations: {
+        school: true,
+        dndClasses: true,
       },
     });
   }

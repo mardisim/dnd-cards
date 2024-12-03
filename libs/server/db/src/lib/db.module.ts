@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Spell } from './entities/spell.entity';
 import { School } from './entities/school.entity';
+import { DndClass } from './entities/dndclass.entity';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { School } from './entities/school.entity';
         username: configService.get('POSTGRES_DB_USERNAME', 'root'),
         password: configService.get('POSTGRES_DB_PASSWORD', 'root'),
         database: configService.get('POSTGRES_NAME', 'dnd_cards'),
-        entities: [User, Spell, School],
+        entities: [User, Spell, School, DndClass],
       }),
     }),
   ],

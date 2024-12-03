@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { School } from './school.entity';
 import { ISpellModel } from '@dnd-cards/shared/interfaces';
+import { DndClass } from './dndclass.entity';
 
 @Entity('spells')
 export class Spell implements ISpellModel {
@@ -34,6 +35,20 @@ export class Spell implements ISpellModel {
   @OneToOne(() => School)
   @JoinColumn({ name: 'school_id' })
   school!: School;
+
+  @ManyToMany(() => DndClass)
+  @JoinTable({
+    name: 'class_spells',
+    joinColumn: {
+      name: 'spell_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'class_id',
+      referencedColumnName: 'id',
+    },
+  })
+  dndClasses!: DndClass[];
 
   constructor(partialSpell: Partial<Spell>) {
     Object.assign(this, partialSpell);

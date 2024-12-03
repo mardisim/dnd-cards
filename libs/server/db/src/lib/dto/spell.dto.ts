@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { School } from '../entities/school.entity';
 import { IsBoolean, IsNotEmpty, IsNumber, IsNumberString, IsString } from 'class-validator';
 import { ISpellModel } from '@dnd-cards/shared/interfaces';
+import { DndClass } from '../entities/dndclass.entity';
 
 export class SpellDto implements ISpellModel {
   @ApiProperty()
@@ -59,4 +60,7 @@ export class SpellDto implements ISpellModel {
   @ApiProperty()
   @IsNotEmpty()
   school!: School;
+  @ApiProperty()
+  @IsNotEmpty()
+  dndClasses!: DndClass[];
 }

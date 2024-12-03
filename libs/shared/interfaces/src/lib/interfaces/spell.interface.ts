@@ -1,3 +1,6 @@
+import { IDndClassModel } from './dndclass.interface';
+import { ISchoolModel } from './school.interface';
+
 export interface ISpellModel {
   id: number;
   name: string;
@@ -12,4 +15,6 @@ export interface ISpellModel {
   concentration: boolean;
   castingTime: string;
   level: number;
+  school: ISchoolModel;
+  dndClasses: IDndClassModel[];
 }

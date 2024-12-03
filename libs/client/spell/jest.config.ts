@@ -1,8 +1,8 @@
 export default {
-  displayName: 'dnd-cards',
-  preset: '../../jest.preset.js',
+  displayName: 'client-spell',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/dnd-cards',
+  coverageDirectory: '../../../coverage/libs/client/spell',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
@@ -18,5 +18,4 @@ export default {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
-  passWithNoTests: true,
 };
