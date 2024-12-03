@@ -1,26 +1,41 @@
-﻿import { Component, inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+﻿import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { AlertService } from '@dnd-cards/client/alert';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '@dnd-cards/client/auth';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { FormErrorModule } from '@dnd-cards/client/utils';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormErrorModule,
+    MatSnackBarModule,
+  ],
   templateUrl: 'register.component.html',
+  styleUrl: 'register.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private authenticationService = inject(AuthenticationService);
-  private alertService = inject(AlertService);
+  private snackBar = inject(MatSnackBar);
 
   registerForm!: FormGroup;
-  loading = false;
-  submitted = false;
 
   constructor() {
     if (this.authenticationService.isAuthenticated) {
@@ -38,29 +53,21 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  get f(): { [p: string]: AbstractControl } {
-    return this.registerForm.controls;
-  }
-
   onSubmit() {
-    this.submitted = true;
-
     if (this.registerForm.invalid) {
       return;
     }
 
-    this.loading = true;
     this.authenticationService
       .register(this.registerForm.value)
       .pipe(first())
       .subscribe({
         complete: () => {
-          this.alertService.success('Registration successful', true);
+          this.snackBar.open('Registration successfull');
           this.router.navigate(['/login']);
         },
         error: ({ error: { message } }) => {
-          this.alertService.error(message);
-          this.loading = false;
+          this.snackBar.open(message);
         },
       });
   }

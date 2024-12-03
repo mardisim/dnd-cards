@@ -1,30 +1,45 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { AuthenticationService } from '@dnd-cards/client/auth';
 import { CommonModule } from '@angular/common';
-import { AlertService } from '@dnd-cards/client/alert';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormErrorModule } from '@dnd-cards/client/utils';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormErrorModule,
+    MatSnackBarModule,
+  ],
   templateUrl: 'login.component.html',
+  styleUrl: 'login.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private authenticationService = inject(AuthenticationService);
-  private alertService = inject(AlertService);
+  private snackBar = inject(MatSnackBar);
 
   loginForm!: FormGroup;
-  loading = false;
-  submitted = false;
 
   constructor() {
     if (this.authenticationService.isAuthenticated) {
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl('/home');
     }
   }
 
@@ -35,31 +50,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get f(): { [p: string]: AbstractControl } {
-    return this.loginForm.controls;
-  }
-
   onSubmit() {
-    this.submitted = true;
-
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
     this.authenticationService
-      .login(this.f['username'].value, this.f['password'].value)
+      .login(this.loginForm?.get('username')?.value, this.loginForm?.get('password')?.value)
       .pipe(take(1))
       .subscribe({
-        complete: () => {
-          this.router.navigate(['/home']);
+        error: ({ error: { message } }) => {
+          this.snackBar.open(message);
         },
-        error: ({ error = {} }) => {
-          const { message } = error;
-          this.alertService.error(message);
-          console.error(error);
-          this.loading = false;
-        },
+        complete: () => setTimeout(() => this.router.navigateByUrl('/home'), 200),
       });
   }
 }
