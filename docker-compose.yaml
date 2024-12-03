@@ -1,12 +1,61 @@
+networks:
+  corp:
+    driver: bridge
+
 services:
   postgres:
+    container_name: postgres
     image: postgres:14-alpine
     restart: always
     volumes:
       - ${POSTGRES_PATH}:/var/lib/postgresql/data
     ports:
       - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+    networks:
+      - corp
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_DB_USERNAME}
       POSTGRES_PASSWORD: ${POSTGRES_DB_PASSWORD}
+
+  api:
+    container_name: api
+    build:
+      context: ./
+      dockerfile: apps/api/Dockerfile
+      args:
+        NODE_ENV: 'development'
+        BUILD_FLAG: ''
+    image: api:nx-dev
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: 'development'
+      PORT: 3000
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_DB_USERNAME: ${POSTGRES_DB_USERNAME}
+      POSTGRES_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
+      AUTH_JWT_SECRET: ${AUTH_JWT_SECRET}
+    networks:
+      - corp
+    restart: on-failure
+
+  dnd-cards:
+    container_name: dnd-cards
+    build:
+      context: ./
+      dockerfile: apps/dnd-cards/Dockerfile
+      args:
+        NODE_ENV: 'development'
+        BUILD_FLAG: ''
+    image: dnd-cards:nx-dev
+    ports:
+      - 4200:4200
+    environment:
+      NODE_ENV: 'development'
+      PORT: 4200
+    networks:
+      - corp
+    restart: on-failure
