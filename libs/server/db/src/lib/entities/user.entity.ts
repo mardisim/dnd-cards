@@ -1,5 +1,5 @@
 import { IUserModel } from '@dnd-cards/shared/interfaces';
-import { IsEmail } from 'class-validator';
+import { IsEmail, IsString } from 'class-validator';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('users')
@@ -22,6 +22,10 @@ export class User implements IUserModel {
   @Column({ length: 250, unique: true })
   @IsEmail()
   email!: string;
+
+  @Column({ length: 250, name: 'refresh_token' })
+  @IsString()
+  refreshToken!: string | null;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt!: Date;

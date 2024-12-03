@@ -1,51 +1,36 @@
-import { Body, Controller, HttpCode, HttpStatus, Logger, Post, Res } from '@nestjs/common';
-import { LoginDto, RegisterDto } from '@dnd-cards/server/db';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { LoginUserDto, CreateUserDto } from '@dnd-cards/server/db';
 import { AuthService } from './auth.service';
-import { Response } from 'express';
-import { UserService } from '@dnd-cards/server/user';
+import { Response, Request } from 'express';
+import { AccessTokenGuard } from '@dnd-cards/server/shared';
+import { RefreshTokenGuard } from '@dnd-cards/server/shared';
 
 @Controller('/auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService, private readonly userService: UserService) {}
+  constructor(private readonly authService: AuthService) {}
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  async loginUser(@Res() res: Response, @Body() loginDto: LoginDto) {
-    if (!(loginDto && loginDto.username && loginDto.password)) {
-      return res.status(HttpStatus.FORBIDDEN).json({ message: 'Username and password are required!' });
-    }
-
-    const user = await this.userService.getUserByUsername(loginDto.username);
-
-    if (user) {
-      if (await UserService.compareHash(loginDto.password, user.password)) {
-        return res.status(HttpStatus.OK).json(await this.authService.createToken(user.username));
-      }
-    }
-
-    return res.status(HttpStatus.FORBIDDEN).json({ message: 'Username or password wrong!' });
+  async loginUser(@Res() res: Response, @Body() loginDto: LoginUserDto) {
+    return res.status(HttpStatus.OK).json(await this.authService.loginUser(loginDto));
   }
 
   @Post('register')
-  async registerUser(@Res() res: Response, @Body() registerDto: RegisterDto) {
-    console.log('req:', registerDto);
-    if (!(registerDto && registerDto.username && registerDto.password)) {
-      return res.status(HttpStatus.FORBIDDEN).json({ message: 'Username and password are required!' });
-    }
+  async registerUser(@Res() res: Response, @Body() createUserDto: CreateUserDto) {
+    return res.status(HttpStatus.OK).json(await this.authService.registerUser(createUserDto));
+  }
 
-    let user;
-    try {
-      user = await this.userService.getUserByUsername(registerDto.username);
-    } catch {
-      Logger.log('Error in lookup user', 'AuthController');
-    }
+  @UseGuards(RefreshTokenGuard)
+  @Get('refresh')
+  refreshTokens(@Req() req: Request) {
+    const userId = req.user['id'];
+    const refreshToken = req.user['refreshToken'];
+    return this.authService.refreshTokens(userId, refreshToken);
+  }
 
-    if (user) {
-      return res.status(HttpStatus.FORBIDDEN).json({ message: 'Username already exists!' });
-    } else {
-      user = await this.userService.createUser(registerDto);
-    }
-
-    return res.status(HttpStatus.OK).json(await this.authService.createToken(user.username));
+  @UseGuards(AccessTokenGuard)
+  @Post('logout')
+  async logoutUser(@Res() res: Response, @Body() username: string) {
+    return res.status(HttpStatus.OK).json(await this.authService.logout(username));
   }
 }

@@ -1,38 +1,33 @@
-import { RegisterDto, User } from '@dnd-cards/server/db';
+import { CreateUserDto, UpdateUserDto, User } from '@dnd-cards/server/db';
+import { IUserModel } from '@dnd-cards/shared/interfaces';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as argon2 from 'argon2';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    private readonly userRepository: Repository<IUserModel>,
   ) {}
 
-  private static async getHash(password: string): Promise<string> {
-    return argon2.hash(password);
+  async createUser(createUserDto: CreateUserDto): Promise<IUserModel> {
+    return this.userRepository.save(createUserDto);
   }
 
-  static async compareHash(password: string, hash: string): Promise<boolean> {
-    try {
-      return await argon2.verify(hash, password);
-    } catch {
-      return false;
-    }
-  }
-
-  async createUser(registerDto: RegisterDto): Promise<User> {
-    const password = await UserService.getHash(registerDto.password);
-    const user = new User({
-      ...registerDto,
-      password,
-    });
-    return this.userRepository.save(user);
-  }
-
-  async getUserByUsername(username: string): Promise<User> {
+  async getUserByUsername(username: string): Promise<IUserModel> {
     return (await this.userRepository.find({ where: { username } }))[0];
+  }
+
+  async getUserById(id: number): Promise<IUserModel> {
+    return (await this.userRepository.find({ where: { id } }))[0];
+  }
+
+  async updateUser(id: number, userData: Partial<UpdateUserDto>) {
+    await this.userRepository.update({ id }, userData);
+  }
+
+  async deleteUser(id: number) {
+    await this.userRepository.delete({ id });
   }
 }

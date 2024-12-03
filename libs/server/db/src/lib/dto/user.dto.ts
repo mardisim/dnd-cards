@@ -1,8 +1,8 @@
-import { ILoginUser, IRegisterUser } from '@dnd-cards/shared/interfaces';
+import { ICreateUser, ILoginUser, IUserModel } from '@dnd-cards/shared/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class LoginDto implements ILoginUser {
+export class LoginUserDto implements ILoginUser {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
@@ -14,7 +14,7 @@ export class LoginDto implements ILoginUser {
   password!: string;
 }
 
-export class RegisterDto implements IRegisterUser {
+export class CreateUserDto implements ICreateUser {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
@@ -34,4 +34,39 @@ export class RegisterDto implements IRegisterUser {
   @IsString()
   @IsNotEmpty()
   lastName!: string;
+
+  @ApiProperty()
+  @IsString()
+  refreshToken!: string | null;
+}
+
+export class UpdateUserDto implements IUserModel {
+  @ApiProperty()
+  @IsNumber()
+  @IsNotEmpty()
+  id!: number;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  username!: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  password!: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  firstName!: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  lastName!: string;
+
+  @ApiProperty()
+  @IsString()
+  refreshToken!: string | null;
 }

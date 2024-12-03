@@ -1,8 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
@@ -14,7 +9,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3000;
   const app = await NestFactory.create(AppModule, { cors: true });
   const config = app.get(ConfigService);
-  
+
   app.setGlobalPrefix(globalPrefix);
 
   const options = new DocumentBuilder()
@@ -22,7 +17,15 @@ async function bootstrap() {
     .setDescription('D&D Cards for your session')
     .setVersion('1.0')
     .setBasePath(globalPrefix)
-    .addBearerAuth()
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      in: 'header',
+      name: 'Authorization',
+      description: 'Enter your Bearer token',
+    })
+    .addSecurityRequirements('bearer')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
