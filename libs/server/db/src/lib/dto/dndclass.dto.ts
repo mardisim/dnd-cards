@@ -15,6 +15,5 @@ export class DndClassDto implements IDndClassModel {
 
   @ApiProperty()
   @IsNumber()
-  @IsNotEmpty()
   level!: number;
 }

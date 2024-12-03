@@ -7,6 +7,4 @@ export class DndClass implements IDndClassModel {
   id!: number;
   @Column({ length: 100 })
   name!: string;
-  @Column()
-  level!: number;
 }
