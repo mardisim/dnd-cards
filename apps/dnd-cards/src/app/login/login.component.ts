@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor() {
-    if (this.authenticationService.isAuthenticated) {
+    if (this.authenticationService.isLoggedIn()) {
       this.router.navigateByUrl('/home');
     }
   }
@@ -60,9 +60,11 @@ export class LoginComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         error: ({ error: { message } }) => {
-          this.snackBar.open(message);
+          this.snackBar.open(message, '', { duration: 1000 });
         },
-        complete: () => setTimeout(() => this.router.navigateByUrl('/home'), 200),
+        complete: () => {
+          this.router.navigateByUrl('/home');
+        },
       });
   }
 }

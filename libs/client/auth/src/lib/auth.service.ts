@@ -1,7 +1,7 @@
 ﻿import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { ICreateUser, ISignedUser } from '@dnd-cards/shared/interfaces';
 import { LocalStorageService } from '@dnd-cards/client/utils';
 
@@ -17,23 +17,33 @@ export class AuthenticationService {
   private readonly localStorage = inject(LocalStorageService);
   private http = inject(HttpClient);
 
+  private _isLoggedIn$ = new BehaviorSubject(!!this.getUserToken());
+  isLoggedIn$ = this._isLoggedIn$.asObservable();
+
   private _currentUser = new BehaviorSubject<ISignedUser | null>(
     JSON.parse(this.localStorage.getItem(CURRENT_USER_STORAGE_KEY) as string),
   );
-  private _isAuthenticated = false;
 
   public currentUser = this._currentUser.asObservable();
 
-  constructor() {
-    this._isAuthenticated = !!this.getUserToken();
-  }
-
-  public get isAuthenticated(): boolean {
-    return this._isAuthenticated;
+  isLoggedIn(): boolean {
+    return this._isLoggedIn$.value;
   }
 
   getUserToken(): string | null {
     return this.localStorage.getItem(ACCESS_TOKEN);
+  }
+
+  refreshAccessToken(): Observable<ISignedUser> {
+    const refreshToken = this.localStorage.getItem('refreshToken');
+    return this.http.post<ISignedUser>(`${AUTH_API_URL}/refresh`, { refreshToken }).pipe(
+      tap(response => {
+        this.localStorage.setItem('accessToken', response.accessToken);
+      }),
+      catchError(error => {
+        throw error;
+      }),
+    );
   }
 
   login(username: string, password: string) {
@@ -43,7 +53,8 @@ export class AuthenticationService {
           this._currentUser.next(user);
           this.localStorage.setItem(ACCESS_TOKEN, user.accessToken);
           this.localStorage.setItem(REFRESH_TOKEN, user.refreshToken);
-          this._isAuthenticated = true;
+          this.localStorage.setItem(CURRENT_USER_STORAGE_KEY, JSON.stringify(user));
+          this._isLoggedIn$.next(true);
         }
 
         return user;
@@ -57,8 +68,9 @@ export class AuthenticationService {
 
   logout() {
     this.localStorage.removeItem(ACCESS_TOKEN);
+    this.localStorage.removeItem(REFRESH_TOKEN);
     this.localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
-    this._isAuthenticated = false;
+    this._isLoggedIn$.next(false);
     this._currentUser.next(null);
   }
 }

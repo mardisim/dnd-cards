@@ -1,13 +1,14 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, switchMap } from 'rxjs';
 import { AuthenticationService } from '../auth.service';
+import { ISignedUser } from '@dnd-cards/shared/interfaces';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class JwtInterceptor implements HttpInterceptor {
   private authenticationService = inject(AuthenticationService);
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.authenticationService.getUserToken();
     if (token) {
       request = request.clone({
@@ -17,6 +18,28 @@ export class JwtInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError(error => {
+        if (error.status === 401 && token) {
+          return this.handleTokenExpired(request, next);
+        }
+
+        throw error;
+      }),
+    );
+  }
+
+  private addToken(request: HttpRequest<unknown>, token: string): HttpRequest<unknown> {
+    return request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+
+  private handleTokenExpired(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    return this.authenticationService
+      .refreshAccessToken()
+      .pipe(switchMap((user: ISignedUser) => next.handle(this.addToken(request, user.accessToken))));
   }
 }

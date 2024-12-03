@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
   constructor() {
-    if (this.authenticationService.isAuthenticated) {
+    if (this.authenticationService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
   }
