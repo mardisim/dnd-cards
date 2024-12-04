@@ -3,6 +3,7 @@ import 'zone.js/node';
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
 import * as express from 'express';
+import * as httpProxy from 'http-proxy';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import bootstrap from './src/main.server';
@@ -10,7 +11,8 @@ import bootstrap from './src/main.server';
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), '/dnd-cards/browser');
+
+  const distFolder = join(process.cwd(), `${process.env['APP_ROOT']}`);
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? join(distFolder, 'index.original.html')
     : join(distFolder, 'index.html');
@@ -29,6 +31,14 @@ export function app(): express.Express {
       maxAge: '1y',
     }),
   );
+
+  const proxy = httpProxy.createProxyServer();
+  server.all('/api/*', function (req, res) {
+    proxy.web(req, res, {
+      target: process.env['API_HOST'],
+      secure: false,
+    });
+  });
 
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
