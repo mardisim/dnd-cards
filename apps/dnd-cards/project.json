@@ -59,8 +59,7 @@
           "buildTarget": "dnd-cards:build:production"
         },
         "development": {
-          "buildTarget": "dnd-cards:build:development",
-          "proxyConfig": "proxy.conf.json"
+          "buildTarget": "dnd-cards:build:development"
         }
       },
       "defaultConfiguration": "development"

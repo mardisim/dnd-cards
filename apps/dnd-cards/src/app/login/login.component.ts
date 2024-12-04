@@ -7,10 +7,10 @@ import { AuthenticationService } from '@dnd-cards/client/auth';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormErrorModule } from '@dnd-cards/client/utils';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormErrorDirective, FormErrorRootDirective } from '@dnd-cards/client/utils';
 
 @Component({
   standalone: true,
@@ -22,8 +22,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormErrorModule,
-    MatSnackBarModule,
+    FormErrorRootDirective,
+    FormErrorDirective,
+    MatSnackBarModule
   ],
   templateUrl: 'login.component.html',
   styleUrl: 'login.component.scss',

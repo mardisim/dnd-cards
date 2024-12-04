@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ISpellModel } from '@dnd-cards/shared/interfaces';
 import { Observable } from 'rxjs';
 
-const AUTH_API_URL = '/api';
+const AUTH_API_URL = 'http://localhost:3000/api';
 
 @Injectable({
   providedIn: 'root',

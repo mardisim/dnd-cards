@@ -1,16 +1,17 @@
-@import "/public/scss/variables";
+
 
 :host {
   display: block;
 }
 
 .spell-container {
-  background: $cardBackgroundColor url('/img/paper-background.png') ;
-  border-radius: $cardBorderRadius;
-  margin: 0 $cardGab $cardGab 0;
-  padding: $cardPadding $cardPadding 0 $cardPadding;
-  height: 500px;
-  font-size: .75rem;
+  background: var(--card-background-color) url('/img/paper-background.png') ;
+  border-radius: var(--card-border-rardius);
+  margin: 0 var(--card-gab) var(--card-gab) 0;
+  padding: var(--card-padding) var(--card-padding) 0 var(--card-padding);
+  height: 500px;    
+  display: flex;
+  flex-direction: column;
 
   h5 {
     margin: 0;
@@ -24,10 +25,10 @@
 
   > header {
     position: relative;
-    border-top-left-radius: $cardBorderRadius;
-    border-top-right-radius: $cardBorderRadius;
+    border-top-left-radius: var(--card-border-rardius);
+    border-top-right-radius: var(--card-border-rardius);
     margin-bottom: 1.5rem;
-    background-color: $cardContentBackgroundColor;
+    background-color: var(--card-content-background-color);
     text-align: center;
     padding: 0 .25rem;
 
@@ -37,6 +38,7 @@
       display: inline-block;
       font-weight: 900;
       margin: 0;
+      font-family: 'Inknut Antiqua';
     }
 
     &.spell-concentration:after {
@@ -56,38 +58,45 @@
   }
 
   .spell-school {
-    color: $cardBackgroundFontColor;
+    color: var(--card-background-font-color);
   }
 
   .spell-details-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: left;
-    margin: 0 -#{$detailsGab} 1.5rem 0;
+    display: grid;
+    grid-gap: 1px;
+    row-gap: 1px;
+    grid-template-columns: 1fr 1fr;
     text-align: center;
+    margin-bottom: 1rem;
   }
 
   .spell-detail {
     padding: .175rem;
-    background-color: $cardContentBackgroundColor;
-    flex: 0 0 calc(50% - #{$detailsGab});
-    margin: 0 $detailsGab $detailsGab 0;
+    background-color: var(--card-content-background-color);
+    flex: 0 0 calc(50% - #{var(--detailsGab)});
+    margin: 0 var(--detailsGab) var(--detailsGab) 0;
+    overflow: hidden;
+    p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 
   .spell-description {
     flex: 1;
-    background-color: $cardContentBackgroundColor;
+    background-color: var(--card-content-background-color);
     padding: 5px;
     overflow: scroll;
-    border-radius: $cardBorderRadius;
+    border-radius: var(--card-border-rardius);
   }
 
   footer {
     display: flex;
     flex-direction: row;
-    color: $cardBackgroundFontColor;
+    color: var(--card-background-font-color);
     line-height: 25px;
+    font-size: .75rem;
 
     .spell-school {
       margin-left: auto;

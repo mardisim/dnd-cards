@@ -8,7 +8,7 @@ import { LocalStorageService } from '@dnd-cards/client/utils';
 const ACCESS_TOKEN = 'Bearer';
 const REFRESH_TOKEN = 'RefreshToken';
 const CURRENT_USER_STORAGE_KEY = 'currentUser';
-const AUTH_API_URL = '/api/auth';
+const AUTH_API_URL = 'http://localhost:3000/api/auth';
 
 @Injectable({
   providedIn: 'root',

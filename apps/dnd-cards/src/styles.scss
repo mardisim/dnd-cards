@@ -2,6 +2,16 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 
+:root {
+  --card-gab: 5px;
+  --detailsGab: 1px;
+  --card-background-color: #999;
+  --card-background-font-color: #FFF;
+  --card-content-background-color: #FFF;
+  --card-padding: .75rem;
+  --card-border-rardius: .5rem;
+}
+
 html {
   @include mat.theme((
     color: (
@@ -21,7 +31,7 @@ html {
 }/* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "Libre Baskerville", "Helvetica Neue", sans-serif; }
 
 mat-form-field {
   width: 100%;

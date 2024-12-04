@@ -13,7 +13,6 @@ export const appRoutes: Route[] = [
   {
     path: 'home',
     loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
-    canActivate: [AuthGuard],
   },
   {
     path: 'spell',

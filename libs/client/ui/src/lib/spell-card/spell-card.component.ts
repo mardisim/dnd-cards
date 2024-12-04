@@ -21,4 +21,7 @@ export class SpellCardComponent {
   level = computed(() => {
     return Number(this.spell()?.level) > 0 ? this.spell()?.level + '. Level' : 'Cantrip';
   });
+  school = computed(() => {
+    return this.spell()?.school.name;
+  });
 }

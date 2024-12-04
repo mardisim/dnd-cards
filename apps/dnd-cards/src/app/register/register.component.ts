@@ -9,8 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormErrorModule } from '@dnd-cards/client/utils';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormErrorDirective, FormErrorRootDirective } from '@dnd-cards/client/utils';
 
 @Component({
   standalone: true,
@@ -22,8 +22,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormErrorModule,
     MatSnackBarModule,
+    FormErrorRootDirective,
+    FormErrorDirective,
   ],
   templateUrl: 'register.component.html',
   styleUrl: 'register.component.scss',

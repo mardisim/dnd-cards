@@ -55,8 +55,9 @@ services:
       - 4200:4200
     environment:
       NODE_ENV: 'development'
-      PORT: 4200,
+      PORT: 4200
       APP_ROOT: '/dnd-cards/browser'
+      API_HOST: ${API_HOST}
     networks:
       - corp
     restart: on-failure
