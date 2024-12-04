@@ -1,4 +1,4 @@
-﻿import { HttpClient } from '@angular/common/http';
+﻿import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -16,6 +16,7 @@ const AUTH_API_URL = '/api/auth';
 export class AuthenticationService {
   private readonly localStorage = inject(LocalStorageService);
   private http = inject(HttpClient);
+  private httpBackend = inject(HttpBackend);
 
   private _isLoggedIn$ = new BehaviorSubject(!!this.getUserToken());
   isLoggedIn$ = this._isLoggedIn$.asObservable();
@@ -35,8 +36,10 @@ export class AuthenticationService {
   }
 
   refreshAccessToken(): Observable<ISignedUser> {
+    const http = new HttpClient(this.httpBackend);
     const refreshToken = this.localStorage.getItem('refreshToken');
-    return this.http.post<ISignedUser>(`${AUTH_API_URL}/refresh`, { refreshToken }).pipe(
+    const headers = new HttpHeaders({ Authorization: `Bearer ${refreshToken}` });
+    return http.get<ISignedUser>(`${AUTH_API_URL}/refresh`, { headers }).pipe(
       tap(response => {
         this.localStorage.setItem('accessToken', response.accessToken);
       }),
