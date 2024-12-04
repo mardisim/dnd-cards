@@ -1,0 +1,32 @@
+<article class="spell-container shadow d-flex flex-column">
+  <header class="text-truncate" [ngClass]="{ 'spell-concentration': spell()?.concentration }">
+    <h3 class="text-truncate">{{ spell()?.name }}</h3>
+  </header>
+  <div class="spell-details-list">
+    <div class="spell-detail spell-casting-time">
+      <h5>Casting Time</h5>
+      <p>{{ spell()?.castingTime }}</p>
+    </div>
+    <div class="spell-detail spell-range">
+      <h5>Range</h5>
+      <p>{{ spell()?.range }}</p>
+    </div>
+    <div class="spell-detail spell-components">
+      <h5>Components</h5>
+      <p>{{ spell()?.components }}</p>
+    </div>
+    <div class="spell-detail spell-duration">
+      <h5>Duration</h5>
+      <p>{{ spell()?.duration }}</p>
+    </div>
+  </div>
+  <div class="spell-description">
+    <span [innerHTML]="description()"></span>
+    <strong *ngIf="spell()?.material">Materials: </strong><br />
+    <strong>{{ spell()?.material }}</strong>
+  </div>
+  <footer>
+    <div class="spell-class">Class</div>
+    <div class="spell-school">{{ level() }} {{ spell()?.school }}</div>
+  </footer>
+</article>

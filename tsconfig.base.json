@@ -17,13 +17,14 @@
     "paths": {
       "@dnd-cards/client/auth": ["libs/client/auth/src/index.ts"],
       "@dnd-cards/client/spell": ["libs/client/spell/src/index.ts"],
+      "@dnd-cards/client/ui": ["libs/client/ui/src/index.ts"],
       "@dnd-cards/client/utils": ["libs/client/utils/src/index.ts"],
       "@dnd-cards/server/auth": ["libs/server/auth/src/index.ts"],
       "@dnd-cards/server/core": ["libs/server/core/src/index.ts"],
       "@dnd-cards/server/db": ["libs/server/db/src/index.ts"],
+      "@dnd-cards/server/shared": ["libs/server/shared/src/index.ts"],
       "@dnd-cards/server/spell": ["libs/server/spell/src/index.ts"],
       "@dnd-cards/server/user": ["libs/server/user/src/index.ts"],
-      "@dnd-cards/server/shared": ["libs/server/shared/src/index.ts"],
       "@dnd-cards/shared/interfaces": ["libs/shared/interfaces/src/index.ts"]
     }
   },

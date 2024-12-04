@@ -2,14 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpellService } from '@dnd-cards/client/spell';
 import { ISpellModel } from '@dnd-cards/shared/interfaces';
-import { SafeHtmlPipe } from '@dnd-cards/client/utils';
+import { SpellCardComponent } from '@dnd-cards/client/ui';
 
 @Component({
   selector: 'app-spell',
   standalone: true,
-  imports: [CommonModule, SafeHtmlPipe],
+  imports: [CommonModule, SpellCardComponent],
   templateUrl: './spell.component.html',
-  styleUrl: './spell.component.css',
+  styleUrl: './spell.component.scss',
 })
 export class SpellComponent implements OnInit {
   private spellService = inject(SpellService);

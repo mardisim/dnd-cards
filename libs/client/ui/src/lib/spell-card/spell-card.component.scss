@@ -1,0 +1,132 @@
+@import "/public/scss/variables";
+
+:host {
+  display: block;
+}
+
+.spell-container {
+  background: $cardBackgroundColor url('/img/paper-background.png') ;
+  border-radius: $cardBorderRadius;
+  margin: 0 $cardGab $cardGab 0;
+  padding: $cardPadding $cardPadding 0 $cardPadding;
+  height: 500px;
+  font-size: .75rem;
+
+  h5 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  > header {
+    position: relative;
+    border-top-left-radius: $cardBorderRadius;
+    border-top-right-radius: $cardBorderRadius;
+    margin-bottom: 1.5rem;
+    background-color: $cardContentBackgroundColor;
+    text-align: center;
+    padding: 0 .25rem;
+
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      display: inline-block;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    &.spell-concentration:after {
+      content: "C";
+      display: inline-block;
+      border-radius: 50%;
+      background-color: #ECB90F;
+      position: absolute;
+      right: 7px;
+      top: 7px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .spell-school {
+    color: $cardBackgroundFontColor;
+  }
+
+  .spell-details-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin: 0 -#{$detailsGab} 1.5rem 0;
+    text-align: center;
+  }
+
+  .spell-detail {
+    padding: .175rem;
+    background-color: $cardContentBackgroundColor;
+    flex: 0 0 calc(50% - #{$detailsGab});
+    margin: 0 $detailsGab $detailsGab 0;
+  }
+
+  .spell-description {
+    flex: 1;
+    background-color: $cardContentBackgroundColor;
+    padding: 5px;
+    overflow: scroll;
+    border-radius: $cardBorderRadius;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    color: $cardBackgroundFontColor;
+    line-height: 25px;
+
+    .spell-school {
+      margin-left: auto;
+    }
+  }
+}
+
+.spell-container.class-artificer {
+  background-color: rgb(124, 69, 62);
+}
+
+.spell-container.class-cleric {
+  background-color: #ffad46;
+}
+
+.spell-container.class-bard {
+  background-color: #8c5385;
+}
+
+.spell-container.class-druid {
+  background-color: #60b85d;
+}
+
+.spell-container.class-paladin {
+  background-color: #3bafb1;
+}
+
+.spell-container.class-ranger {
+  background-color: #857056;
+}
+
+.spell-container.class-sorcerer {
+  background-color: rgb(248, 58, 34);
+}
+
+.spell-container.class-warlock {
+  background-color: #8c5385;
+}
+
+.spell-container.class-wizard {
+  background-color: #800000;
+}
