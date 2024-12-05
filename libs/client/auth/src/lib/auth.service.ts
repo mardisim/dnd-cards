@@ -10,13 +10,16 @@ const REFRESH_TOKEN = 'RefreshToken';
 const CURRENT_USER_STORAGE_KEY = 'currentUser';
 const AUTH_API_URL = 'http://localhost:3000/api/auth';
 
+export type Tokens = [string, string];
+export type TokenResponse = { accessToken: string; refreshToken: string };
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   private readonly localStorage = inject(LocalStorageService);
-  private http = inject(HttpClient);
-  private httpBackend = inject(HttpBackend);
+  private readonly http = inject(HttpClient);
+  private readonly httpBackend = inject(HttpBackend);
+  private readonly httpBypass = new HttpClient(this.httpBackend);
 
   private _isLoggedIn$ = new BehaviorSubject(!!this.getUserToken());
   isLoggedIn$ = this._isLoggedIn$.asObservable();
@@ -35,13 +38,11 @@ export class AuthenticationService {
     return this.localStorage.getItem(ACCESS_TOKEN);
   }
 
-  refreshAccessToken(): Observable<ISignedUser> {
-    const http = new HttpClient(this.httpBackend);
-    const refreshToken = this.localStorage.getItem('refreshToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${refreshToken}` });
-    return http.get<ISignedUser>(`${AUTH_API_URL}/refresh`, { headers }).pipe(
+  refreshAccessToken(): Observable<TokenResponse> {
+    const headers = new HttpHeaders({ Authorization: `Bearer ${this.localStorage.getItem(REFRESH_TOKEN)}` });
+    return this.httpBypass.get<TokenResponse>(`${AUTH_API_URL}/refresh`, { headers }).pipe(
       tap(response => {
-        this.localStorage.setItem('accessToken', response.accessToken);
+        this.setTokens([response.accessToken, response.refreshToken]);
       }),
       catchError(error => {
         throw error;
@@ -54,8 +55,7 @@ export class AuthenticationService {
       map(user => {
         if (user && user.accessToken && user.refreshToken) {
           this._currentUser.next(user);
-          this.localStorage.setItem(ACCESS_TOKEN, user.accessToken);
-          this.localStorage.setItem(REFRESH_TOKEN, user.refreshToken);
+          this.setTokens([user.accessToken, user.refreshToken]);
           this.localStorage.setItem(CURRENT_USER_STORAGE_KEY, JSON.stringify(user));
           this._isLoggedIn$.next(true);
         }
@@ -70,10 +70,19 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.localStorage.removeItem(ACCESS_TOKEN);
-    this.localStorage.removeItem(REFRESH_TOKEN);
+    this.removeTokens();
     this.localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
     this._isLoggedIn$.next(false);
     this._currentUser.next(null);
+  }
+
+  setTokens([accessToken, refreshToken]: Tokens) {
+    this.localStorage.setItem(ACCESS_TOKEN, accessToken);
+    this.localStorage.setItem(REFRESH_TOKEN, refreshToken);
+  }
+
+  removeTokens() {
+    this.localStorage.removeItem(ACCESS_TOKEN);
+    this.localStorage.removeItem(REFRESH_TOKEN);
   }
 }

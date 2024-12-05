@@ -1,8 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, switchMap } from 'rxjs';
-import { AuthenticationService } from '../auth.service';
-import { ISignedUser } from '@dnd-cards/shared/interfaces';
+import { AuthenticationService, TokenResponse } from '../auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class JwtInterceptor implements HttpInterceptor {
@@ -40,6 +39,6 @@ export class JwtInterceptor implements HttpInterceptor {
   private handleTokenExpired(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return this.authenticationService
       .refreshAccessToken()
-      .pipe(switchMap((user: ISignedUser) => next.handle(this.addToken(request, user.accessToken))));
+      .pipe(switchMap((token: TokenResponse) => next.handle(this.addToken(request, token.accessToken))));
   }
 }
