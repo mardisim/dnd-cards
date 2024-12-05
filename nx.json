@@ -86,5 +86,20 @@
     "@nx/angular:component": {
       "style": "css"
     }
+  },
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  },
+  "projects": {
+    "server": {
+      "tags": ["domain:server", "type:api"]
+    },
+    "client": {
+      "tags": ["domain:client", "type:ui"]
+    },
+    "products-data-access-products": {
+      "tags": ["domain:shared", "type:util"]
+    }
   }
 }

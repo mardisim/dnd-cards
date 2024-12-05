@@ -4,7 +4,7 @@
   "sourceRoot": "libs/client/spell/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["scope:client", "type:feature"],
+  "tags": ["domain:client", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

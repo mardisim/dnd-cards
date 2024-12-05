@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/server/spell/src",
   "projectType": "library",
-  "tags": ["scope:server", "type:feature"],
+  "tags": ["domain:server", "type:feature"],
   "// targets": "to see all targets run: nx show project spell --web",
   "targets": {}
 }

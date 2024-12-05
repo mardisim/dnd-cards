@@ -4,7 +4,7 @@
   "sourceRoot": "libs/client/utils/src",
   "prefix": "",
   "projectType": "library",
-  "tags": ["scope:client", "type:util"],
+  "tags": ["domain:client", "type:util"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",

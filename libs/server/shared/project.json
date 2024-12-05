@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/server/shared/src",
   "projectType": "library",
-  "tags": ["scope:server", "type:shared"],
+  "tags": ["domain:server", "type:shared"],
   "// targets": "to see all targets run: nx show project shared --web",
   "targets": {}
 }

@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/dnd-cards/src",
-  "tags": ["scope:client"],
+  "tags": ["domain:client"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

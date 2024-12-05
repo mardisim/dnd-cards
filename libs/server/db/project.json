@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/server/db/src",
   "projectType": "library",
-  "tags": ["scope:server"],
+  "tags": ["domain:server"],
   "// targets": "to see all targets run: nx show project db --web",
   "targets": {}
 }

@@ -21,57 +21,37 @@ module.exports = [
               onlyDependOnLibsWithTags: ['*'],
             },
             {
-              sourceTag: 'scope:shared',
-              onlyDependOnLibsWithTags: ['scope:shared'],
+              sourceTag: 'domain:shared',
+              onlyDependOnLibsWithTags: ['domain:shared'],
             },
             {
-              sourceTag: 'scope:server',
-              onlyDependOnLibsWithTags: ['scope:shared', 'scope:server'],
+              sourceTag: 'domain:server',
+              onlyDependOnLibsWithTags: ['domain:shared', 'domain:server'],
             },
             {
-              sourceTag: 'scope:client',
-              onlyDependOnLibsWithTags: ['scope:shared', 'scope:client'],
+              sourceTag: 'domain:client',
+              onlyDependOnLibsWithTags: ['domain:shared', 'domain:client'],
             },
             {
-              "sourceTag": "type:app",
-              "onlyDependOnLibsWithTags": [
-                "type:feature",
-                "type:shell",
-                "type:domain",
-                "type:api",
-                "type:util"
-              ]
+              sourceTag: 'type:app',
+              onlyDependOnLibsWithTags: ['type:feature', 'type:shell', 'type:domain', 'type:api', 'type:util'],
             },
             {
-              "sourceTag": "type:feature",
-              "onlyDependOnLibsWithTags": [
-                "type:feature",
-                "type:api",
-                "type:ui",
-                "type:domain",
-                "type:util",
-              ]
+              sourceTag: 'type:feature',
+              onlyDependOnLibsWithTags: ['type:feature', 'type:api', 'type:ui', 'type:domain', 'type:util'],
             },
             {
-              "sourceTag": "type:api",
-              "onlyDependOnLibsWithTags": [
-                "type:ui",
-                "type:domain",
-                "type:util"
-              ]
+              sourceTag: 'type:api',
+              onlyDependOnLibsWithTags: ['type:ui', 'type:domain', 'type:util'],
             },
             {
-              "sourceTag": "type:ui",
-              "onlyDependOnLibsWithTags": ["type:domain", "type:ui", "type:util"]
+              sourceTag: 'type:ui',
+              onlyDependOnLibsWithTags: ['type:domain', 'type:ui', 'type:util'],
             },
             {
-              "sourceTag": "type:domain",
-              "onlyDependOnLibsWithTags": ["type:domain", "type:util"]
+              sourceTag: 'type:util',
+              onlyDependOnLibsWithTags: ['type:util'],
             },
-            {
-              "sourceTag": "type:util",
-              "onlyDependOnLibsWithTags": ["type:util"]
-            }
           ],
         },
       ],
