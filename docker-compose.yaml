@@ -38,6 +38,7 @@ services:
       POSTGRES_DB_USERNAME: ${POSTGRES_DB_USERNAME}
       POSTGRES_DB_PASSWORD: ${POSTGRES_DB_PASSWORD}
       AUTH_JWT_SECRET: ${AUTH_JWT_SECRET}
+      AUTH_JWT_REFRESH_SECRET: ${AUTH_JWT_REFRESH_SECRET}
     networks:
       - corp
     restart: on-failure
