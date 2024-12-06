@@ -13,7 +13,7 @@ module.exports = [
         {
           type: ['element', 'attribute'],
           prefix: '',
-          style: ['camelCase', 'kebab-case'],
+          style: 'kebab-case',
         },
       ],
       '@angular-eslint/component-selector': [
@@ -30,5 +30,11 @@ module.exports = [
     files: ['**/*.html'],
     // Override or add rules here
     rules: {},
+  },
+  {
+    files: ['**/*.ts'],
+    rules: {
+      '@angular-eslint/prefer-standalone': 'off',
+    },
   },
 ];

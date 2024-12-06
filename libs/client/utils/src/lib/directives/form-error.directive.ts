@@ -1,4 +1,13 @@
-import { Directive, EmbeddedViewRef, inject, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  EmbeddedViewRef,
+  inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 import {
   combineLatest,
   distinctUntilChanged,
@@ -13,13 +22,13 @@ import {
 import { FormErrorRootDirective } from './form-error-root.directive';
 
 export interface HasErrorContext {
-  $implicit: any;
+  $implicit: unknown;
 }
 
 @Directive({
-  selector: '[hasError]',
+  selector: '[has-error]',
 })
-export class FormErrorDirective implements OnInit {
+export class FormErrorDirective implements OnInit, OnDestroy {
   private hasErrorRoot = inject(FormErrorRootDirective);
   private templateRef = inject(TemplateRef<HasErrorContext>);
   private vcr = inject(ViewContainerRef);

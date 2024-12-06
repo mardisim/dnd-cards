@@ -7,13 +7,13 @@
       <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput [formControl]="$any(loginForm.controls['username'])" required />
-        <mat-error *hasError="'required'">Username is required</mat-error>
+        <mat-error *has-error="'required'">Username is required</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Password</mat-label>
         <input matInput type="password" [formControl]="$any(loginForm.controls['password'])" required />
-        <mat-error *hasError="'required'">Password is required</mat-error>
+        <mat-error *has-error="'required'">Password is required</mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

@@ -34,23 +34,23 @@ module.exports = [
             },
             {
               sourceTag: 'type:app',
-              onlyDependOnLibsWithTags: ['type:feature', 'type:shell', 'type:domain', 'type:api', 'type:util'],
+              onlyDependOnLibsWithTags: ['type:feature', 'type:api', 'type:util'],
             },
             {
               sourceTag: 'type:feature',
-              onlyDependOnLibsWithTags: ['type:feature', 'type:api', 'type:ui', 'type:domain', 'type:util'],
+              onlyDependOnLibsWithTags: ['type:feature', 'type:shared', 'type:api', 'type:ui', 'type:util'],
             },
             {
               sourceTag: 'type:api',
-              onlyDependOnLibsWithTags: ['type:ui', 'type:domain', 'type:util'],
+              onlyDependOnLibsWithTags: ['type:ui', 'type:util', 'type:shared'],
             },
             {
               sourceTag: 'type:ui',
-              onlyDependOnLibsWithTags: ['type:domain', 'type:ui', 'type:util'],
+              onlyDependOnLibsWithTags: ['type:ui', 'type:util', 'type:shared'],
             },
             {
               sourceTag: 'type:util',
-              onlyDependOnLibsWithTags: ['type:util'],
+              onlyDependOnLibsWithTags: ['type:util', 'type:shared'],
             },
           ],
         },
