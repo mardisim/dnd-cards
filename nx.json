@@ -1,12 +1,4 @@
 {
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "accessToken": "${NX_CLOUD_ACCESS_TOKEN}"
-      }
-    }
-  },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
@@ -98,8 +90,8 @@
     "client": {
       "tags": ["domain:client", "type:ui"]
     },
-    "products-data-access-products": {
-      "tags": ["domain:shared", "type:util"]
+    "shared": {
+      "tags": ["domain:shared", "type:shared"]
     }
   }
 }
