@@ -1,0 +1,22 @@
+{
+  "name": "tokens",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/tokens/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nxkit/style-dictionary:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "libs/tokens/out",
+        "styleDictionaryConfig": "libs/tokens/style-dictionary.config.ts",
+        "tsConfig": "libs/tokens/tsconfig.json",
+        "customActions": "libs/tokens/src/extensions/actions/index.ts"
+      }
+    },
+    "lint": {
+      "command": "eslint libs/tokens/**/*.{js,ts}"
+    }
+  }
+}
