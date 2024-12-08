@@ -16,7 +16,6 @@ async function bootstrap() {
     .setTitle('dnd-cards')
     .setDescription('D&D Cards for your session')
     .setVersion('1.0')
-    .setBasePath(globalPrefix)
     .addBearerAuth({
       type: 'http',
       scheme: 'bearer',
