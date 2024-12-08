@@ -1,8 +1,8 @@
 export default {
-  displayName: 'interfaces',
+  displayName: 'registration',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/shared/interfaces',
+  coverageDirectory: '../../../coverage/libs/client/registration',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
@@ -18,5 +18,4 @@ export default {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
-  passWithNoTests: true,
 };

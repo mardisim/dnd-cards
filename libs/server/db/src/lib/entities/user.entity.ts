@@ -1,4 +1,4 @@
-import { IUserModel } from '@dnd-cards/shared/interfaces';
+import { IUserModel } from '@interfaces';
 import { IsEmail, IsString } from 'class-validator';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 

@@ -1,4 +1,4 @@
-import { IDndClassModel } from '@dnd-cards/shared/interfaces';
+import { IDndClassModel } from '@interfaces';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('classes')

@@ -1,4 +1,4 @@
-import { ISchoolModel } from '@dnd-cards/shared/interfaces';
+import { ISchoolModel } from '@interfaces';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('schools')

@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { School } from './school.entity';
-import { ISpellModel } from '@dnd-cards/shared/interfaces';
+import { ISpellModel } from '@interfaces';
 import { DndClass } from './dndclass.entity';
 
 @Entity('spells')

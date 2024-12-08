@@ -1,7 +1,7 @@
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '@dnd-cards/server/user';
-import { ICreateUser, IJWTPayloadUser } from '@dnd-cards/shared/interfaces';
+import { ICreateUser, IJWTPayloadUser } from '@interfaces';
 import { ConfigService } from '@nestjs/config';
 import * as argon2 from 'argon2';
 import { CreateUserDto, LoginUserDto } from '@dnd-cards/server/db';

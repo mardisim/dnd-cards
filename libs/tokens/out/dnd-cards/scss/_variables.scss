@@ -1,6 +1,6 @@
 
 // Do not edit directly
-// Generated on Fri, 06 Dec 2024 00:27:47 GMT
+// Generated on Fri, 06 Dec 2024 20:18:56 GMT
 
 $asset-font-icon-name: "MaterialIcons";
 $asset-font-icon-ttf: "assets/fonts/MaterialIcons-Regular.ttf";
@@ -336,6 +336,11 @@ $color-font-inverse-success: #66bb6a;
 $color-font-inverse-disabled: #f5f5f5;
 $color-font-button-primary: #ffffff;
 $color-font-button-secondary: #009688;
+$shadow-tiny: 0 1px 2px rgb(0 0 0 / 18%); // the tiny space padding 
+$shadow-small: 0 1px 2px rgb(0 0 0 / 24%); // the small space padding 
+$shadow-medium: 0 2px 4px rgb(0 0 0 / 24%); // the medium space padding 
+$shadow-large: 0 2px 8px rgb(0 0 0 / 24%); // the large space padding 
+$shadow-xl: 0 4px 16px rgb(0 0 0 / 24%); // the extra large space padding 
 $size-font-tiny: 0.75rem; // the tiny size of the font
 $size-font-small: 0.875rem; // the small size of the font
 $size-font-medium: 1rem; // the medium size of the font
@@ -356,6 +361,16 @@ $size-padding-large: 1.5rem; // the large space padding
 $size-padding-xl: 2rem; // the extra large space padding 
 $size-padding-xxl: 3rem; // the extra extra large space padding 
 $size-padding-base: 1rem; // the base space padding 
+$border-radius-small: 0.1875; // small border radius
+$border-radius-medium: 0.25; // medium border radius
+$border-radius-large: 0.5; // large border radius
+$border-radius-xl: 1; // extra large border radius
+$border-radius-circle: 50%; // circle shared border radius
+$border-radius-pill: 9999px; // pill shaped border radius
+$screen-breakpoint-mobile: 640px; // breakpoint for mobile 
+$screen-breakpoint-tablet: 768px; // breakpoint for tablets 
+$screen-breakpoint-desktop: 1024px; // breakpoint for desktop 
+$screen-breakpoint-desktop-large: 1280px; // breakpoint for large desktops
 $font-family-base: Open Sans;
 $font-family-icons: MaterialIcons;
 $time-transition-short: 0.20s;

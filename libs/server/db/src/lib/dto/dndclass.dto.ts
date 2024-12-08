@@ -1,4 +1,4 @@
-import { IDndClassModel } from '@dnd-cards/shared/interfaces';
+import { IDndClassModel } from '@interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 

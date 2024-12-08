@@ -1,4 +1,4 @@
-import { ICreateUser, ILoginUser, IUserModel } from '@dnd-cards/shared/interfaces';
+import { ICreateUser, ILoginUser, IUserModel } from '@interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 

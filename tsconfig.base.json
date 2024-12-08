@@ -19,13 +19,15 @@
       "@dnd-cards/client/spell": ["libs/client/spell/src/index.ts"],
       "@dnd-cards/client/ui": ["libs/client/ui/src/index.ts"],
       "@dnd-cards/client/utils": ["libs/client/utils/src/index.ts"],
+      "@dnd-cards/client/registration": ["libs/client/registration/src/index.ts"],
       "@dnd-cards/server/auth": ["libs/server/auth/src/index.ts"],
       "@dnd-cards/server/core": ["libs/server/core/src/index.ts"],
       "@dnd-cards/server/db": ["libs/server/db/src/index.ts"],
       "@dnd-cards/server/shared": ["libs/server/shared/src/index.ts"],
       "@dnd-cards/server/spell": ["libs/server/spell/src/index.ts"],
       "@dnd-cards/server/user": ["libs/server/user/src/index.ts"],
-      "@dnd-cards/shared/interfaces": ["libs/shared/interfaces/src/index.ts"]
+      "@interfaces": ["libs/interfaces/src/index.ts"],
+      "@tokens": ["libs/tokens/out/dnd-cards"]
     }
   },
   "exclude": ["node_modules", "tmp"]
