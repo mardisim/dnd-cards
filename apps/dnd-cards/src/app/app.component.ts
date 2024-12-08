@@ -2,26 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
+import { TopNavComponent } from '@dnd-cards/client/ui';
 
 @Component({
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-  ],
+  imports: [CommonModule, RouterModule, TopNavComponent],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }],
   selector: 'app-root',
   templateUrl: './app.component.html',
