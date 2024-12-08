@@ -16,6 +16,9 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/dnd-cards/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/dnd-cards/public", "libs/tokens/out/dnd-cards"]
+        },
         "assets": [
           {
             "glob": "**/*",

@@ -1,15 +1,12 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
+@use 'scss/_theme-colors' as custom_theme;
+@use 'scss/_variables';
 @use '@angular/material' as mat;
 
-
-
-
 :root {
-  --card-gab: var(--);
+  --card-gab: $size-padding-small;
   --detailsGab: 1px;
   --card-background-color: #512525;
-  --card-background-font-color: #FFF;
+  --card-background-font-color: #ffe600;
   --card-content-background-color: #FFF;
   --card-padding: .75rem;
   --card-border-rardius: .5rem;
@@ -18,9 +15,9 @@
 html {
   @include mat.theme((
     color: (
-      theme-type: dark,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
+      theme-type: light,
+      primary: custom_theme.$primary-palette,
+      tertiary: custom_theme.$tertiary-palette,
     ),
     typography: (
       plain-family: "Libre Baskerville",
@@ -32,6 +29,10 @@ html {
     density: -5,
   ));
 }/* You can add global styles to this file, and also import other style files */
+
+body.dark-mode {
+  color-scheme: dark;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: "Libre Baskerville", "Helvetica Neue", sans-serif; }
