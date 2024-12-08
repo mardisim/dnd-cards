@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SafeHtmlPipe } from '@dnd-cards/client/utils';
-import { ISpellModel } from '@dnd-cards/shared/interfaces';
+import { ISpellModel } from '@interfaces';
 
 @Component({
   selector: 'lib-ui-spell-card',
