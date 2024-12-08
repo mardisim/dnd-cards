@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ISpellModel } from '@dnd-cards/shared/interfaces';
+import { ISpellModel } from '@interfaces';
 import { Observable } from 'rxjs';
 
 const AUTH_API_URL = 'http://localhost:3000/api';
