@@ -1,0 +1,180 @@
+@property --highlight-x {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+@property --highlight-y {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+.card-container {
+  --card-background-gradient-angle: 0;
+  --transition-timing: 2s;
+  --perspective: 1000px;
+  --rotationX: 0;
+  --rotationY: 0;
+  --rotationZ: 0;
+
+  --tiltX: 0;
+  --tiltY: 0;
+  --angle: 7deg;
+
+  --flipped: 0;
+
+  position: relative;
+
+  place-content: center;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 0.7;
+}
+
+.card-container:active {
+  display: block;
+  .content {
+    --flipped: 1;
+  }
+}
+
+.mouse-position-tracker {
+  position: absolute;
+  inset: 0;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  & > div {
+    z-index: 2;
+  }
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(1):hover) {
+  --tiltX: 1;
+  --tiltY: 1;
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(2):hover) {
+  --tiltX: 1;
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(3):hover) {
+  --tiltX: 1;
+  --tiltY: -1;
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(4):hover) {
+  --tiltY: 1;
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(6):hover) {
+  --tiltY: -1;
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(7):hover) {
+  --tiltX: -1;
+  --tiltY: 1;
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(8):hover) {
+  --tiltX: -1;
+}
+
+.card-container:has(.mouse-position-tracker > div:nth-child(9):hover) {
+  --tiltX: -1;
+  --tiltY: -1;
+}
+
+.back {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  transition: background-color 300ms linear;
+  background-color: var(--card-background-color);
+  backface-visibility: hidden;
+
+  &::after {
+    --highlight-x: calc(50% + (50% * var(--tiltY)));
+    --highlight-y: calc(50% + (50% * var(--tiltX) * -1));
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0.5rem;
+    mask:
+      url('/img/test.svg#corner-lt') left top / 25% auto no-repeat,
+      url('/img/test.svg#corner-rt') right top / 25% auto no-repeat,
+      url('/img/test.svg#corner-rb') right bottom / 25% auto no-repeat,
+      url('/img/test.svg#corner-lb') left bottom / 25% auto no-repeat,
+      url('/img/test.svg#deco-l') left center / 25% auto no-repeat,
+      url('/img/test.svg#deco-r') right center / 25% auto no-repeat,
+      url('/img/class-barbarian.svg') center center / 50% auto no-repeat;
+
+    mask-repeat: no-repeat;
+    background: radial-gradient(
+      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
+      #e29f5d -7.62%,
+      #ffc170 14.51%,
+      #dac1a2 32.4%,
+      #ffc170 84.95%,
+      #a25c16 106.96%
+    );
+    transition:
+      --highlight-x 1s ease,
+      --highlight-y 1s ease;
+  }
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+
+  transform-style: preserve-3d;
+
+  background: rgb(147, 51, 51) url('/img/paper-background.png');
+  border-radius: 0.5rem;
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
+  transform: perspective(var(--perspective)) rotateX(calc(var(--angle) * var(--tiltX)))
+    rotateY(calc((180deg * var(--flipped)) - (var(--angle) * var(--tiltY)))) rotateZ(var(--rotationZ));
+  transition: transform 500ms ease;
+
+  border-radius: 1rem;
+
+  &:before {
+    --highlight-x: calc(50% + (50% * var(--tiltY) * -1));
+    --highlight-y: calc(50% + (50% * var(--tiltX) * -1));
+    display: block;
+    content: '';
+    position: absolute;
+    inset: 0;
+    transition:
+      --highlight-x 1s ease,
+      --highlight-y 1s ease;
+    background: radial-gradient(
+      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    z-index: 100;
+    border-radius: 1rem;
+  }
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(180deg);
+}

@@ -5,37 +5,49 @@
 :root {
   --card-gab: $size-padding-small;
   --detailsGab: 1px;
-  --card-background-color: #512525;
+  --card-background-gradient-angle: 45deg;
   --card-background-font-color: #ffe600;
-  --card-content-background-color: #FFF;
-  --card-padding: .75rem;
-  --card-border-rardius: .5rem;
+  --card-content-background-color: #fff;
+  --card-padding: 0.75rem;
+  --card-border-rardius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: custom_theme.$primary-palette,
-      tertiary: custom_theme.$tertiary-palette,
-    ),
-    typography: (
-      plain-family: "Libre Baskerville",
-      brand-family: "Inknut Antiqua",
-      bold-weight: 900,
-      medium-weight: 500,
-      regular-weight: 300,
-    ),
-    density: -5,
-  ));
-}/* You can add global styles to this file, and also import other style files */
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: custom_theme.$primary-palette,
+        tertiary: custom_theme.$tertiary-palette,
+      ),
+      typography: (
+        plain-family: 'Libre Baskerville',
+        brand-family: 'Inknut Antiqua',
+        bold-weight: 900,
+        medium-weight: 500,
+        regular-weight: 300,
+      ),
+      density: -5,
+    )
+  );
+} /* You can add global styles to this file, and also import other style files */
 
 body.dark-mode {
   color-scheme: dark;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: "Libre Baskerville", "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Libre Baskerville', 'Helvetica Neue', sans-serif;
+}
 
 mat-form-field {
   width: 100%;

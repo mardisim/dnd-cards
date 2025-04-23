@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'lib-ui-card',
+  imports: [],
+  template: `
+    <div class="card-container">
+      <div class="mouse-position-tracker">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="content" #content>
+        <div class="front">
+          <ng-content></ng-content>
+        </div>
+        <div class="back"></div>
+      </div>
+    </div>
+  `,
+  styleUrl: 'card.component.scss',
+})
+export class CardComponent {}

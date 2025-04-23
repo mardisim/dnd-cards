@@ -1,16 +1,13 @@
-
-
 :host {
   display: block;
+  height: 100%;
 }
 
 .spell-container {
-  background: var(--card-background-color) url('/img/paper-background.png') ;
-  border-radius: var(--card-border-rardius);
   margin: 0 var(--card-gab) var(--card-gab) 0;
   padding: var(--card-padding) var(--card-padding) 0 var(--card-padding);
-  height: 500px;    
   display: flex;
+  height: 100%;
   flex-direction: column;
 
   h5 {
@@ -30,7 +27,7 @@
     margin-bottom: 1.5rem;
     background-color: var(--card-content-background-color);
     text-align: center;
-    padding: 0 .25rem;
+    padding: 0 0.25rem;
 
     h3 {
       font-size: 1.25rem;
@@ -42,10 +39,10 @@
     }
 
     &.spell-concentration:after {
-      content: "C";
+      content: 'C';
       display: inline-block;
       border-radius: 50%;
-      background-color: #ECB90F;
+      background-color: #ecb90f;
       position: absolute;
       right: 7px;
       top: 7px;
@@ -71,7 +68,7 @@
   }
 
   .spell-detail {
-    padding: .175rem;
+    padding: 0.175rem;
     background-color: var(--card-content-background-color);
     flex: 0 0 calc(50% - #{var(--detailsGab)});
     margin: 0 var(--detailsGab) var(--detailsGab) 0;
@@ -96,7 +93,7 @@
     flex-direction: row;
     color: var(--card-background-font-color);
     line-height: 25px;
-    font-size: .75rem;
+    font-size: 0.75rem;
 
     .spell-school {
       margin-left: auto;

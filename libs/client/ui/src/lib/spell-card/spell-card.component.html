@@ -1,29 +1,29 @@
 <article class="spell-container shadow d-flex flex-column">
-  <header class="text-truncate" [ngClass]="{ 'spell-concentration': spell()?.concentration }">
-    <h3 class="text-truncate">{{ spell()?.name }}</h3>
+  <header class="text-truncate" [ngClass]="{ 'spell-concentration': spell().concentration }">
+    <h3 class="text-truncate">{{ spell().name }}</h3>
   </header>
   <div class="spell-details-list">
-    <div class="spell-detail spell-casting-time">
+    <div class="spell-detail" id="spell-casting-time">
       <h5>Casting Time</h5>
-      <p>{{ spell()?.castingTime }}</p>
+      <p>{{ spell().castingTime }}</p>
     </div>
-    <div class="spell-detail spell-range">
+    <div class="spell-detail" id="spell-range">
       <h5>Range</h5>
-      <p>{{ spell()?.range }}</p>
+      <p>{{ spell().range }}</p>
     </div>
-    <div class="spell-detail spell-components">
+    <div class="spell-detail" id="spell-components">
       <h5>Components</h5>
-      <p>{{ spell()?.components }}</p>
+      <p>{{ spell().components }}</p>
     </div>
-    <div class="spell-detail spell-duration">
+    <div class="spell-detail" id="spell-duration">
       <h5>Duration</h5>
-      <p>{{ spell()?.duration }}</p>
+      <p>{{ spell().duration }}</p>
     </div>
   </div>
   <div class="spell-description">
     <span [innerHTML]="description()"></span>
-    <strong *ngIf="spell()?.material">Materials: </strong><br />
-    <strong>{{ spell()?.material }}</strong>
+    <strong *ngIf="spell().material">Materials: </strong><br />
+    <strong>{{ spell().material }}</strong>
   </div>
   <footer>
     <div class="spell-class">Class</div>

@@ -14,14 +14,14 @@ import { ISpellModel } from '@interfaces';
 export class SpellCardComponent {
   private safeHtml = inject(SafeHtmlPipe);
 
-  spell = input<ISpellModel>();
+  spell = input.required<ISpellModel>();
   description = computed(() => {
     return this.safeHtml.transform(this.spell()?.description as string);
   });
   level = computed(() => {
-    return Number(this.spell()?.level) > 0 ? this.spell()?.level + '. Level' : 'Cantrip';
+    return Number(this.spell().level) > 0 ? this.spell().level + '. Level' : 'Cantrip';
   });
   school = computed(() => {
-    return this.spell()?.school.name;
+    return this.spell().school.name;
   });
 }
