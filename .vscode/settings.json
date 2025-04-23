@@ -8,5 +8,11 @@
     "emmet.preferences": {
         "emmet.triggerExpansionOnTab": true
     },
-    "zenMode.centerLayout": false
+    "zenMode.centerLayout": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    }
 }
