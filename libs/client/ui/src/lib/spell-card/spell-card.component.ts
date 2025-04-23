@@ -1,12 +1,13 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { SafeHtmlPipe } from '@dnd-cards/client/utils';
 import { ISpellModel } from '@interfaces';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'lib-ui-spell-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent, JsonPipe],
   providers: [SafeHtmlPipe],
   templateUrl: './spell-card.component.html',
   styleUrl: './spell-card.component.scss',

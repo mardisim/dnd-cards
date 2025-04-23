@@ -9,8 +9,207 @@
   initial-value: 0%;
 }
 
+:host(.class-artificer) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-3-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-3-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-3-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-3-lb') left bottom / 33% auto no-repeat,
+      url('/img/test.svg#deco-3-l') left center / 66% auto no-repeat,
+      url('/img/test.svg#deco-3-r') right center / 66% auto no-repeat,
+      url('/img/class-artificer.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(23, 196, 0);
+    --dnd-class-background-color-shadow: rgb(9, 94, 147);
+  }
+}
+
+:host(.class-barbarian) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-1-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-1-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-1-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-1-lb') left bottom / 33% auto no-repeat,
+      url('/img/test.svg#deco-1-l') left center / 66% auto no-repeat,
+      url('/img/test.svg#deco-1-r') right center / 66% auto no-repeat,
+      url('/img/class-barbarian.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(147, 51, 51);
+    --dnd-class-background-color-shadow: rgb(122, 40, 40);
+  }
+}
+
+:host(.class-bard) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-bard.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(196, 46, 0);
+    --dnd-class-background-color-shadow: rgb(137, 48, 0);
+  }
+}
+
+:host(.class-cleric) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-4-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-lb') left bottom / 33% auto no-repeat,
+      url('/img/test.svg#deco-4-l') left center / 66% auto no-repeat,
+      url('/img/test.svg#deco-4-r') right center / 66% auto no-repeat,
+      url('/img/class-cleric.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(255, 213, 0);
+    --dnd-class-background-color-shadow: rgb(188, 163, 39);
+    --background-color-radial-ornament: radial-gradient(
+      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
+      #43aeff 0,
+      #0770c1 100%
+    );
+  }
+}
+
+:host(.class-druid) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-druid.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(18, 148, 89);
+    --dnd-class-background-color-shadow: rgb(9, 104, 61);
+  }
+}
+
+:host(.class-fighter) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-4-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-lb') left bottom / 33% auto no-repeat,
+      url('/img/test.svg#deco-4-l') left center / 66% auto no-repeat,
+      url('/img/test.svg#deco-4-r') right center / 66% auto no-repeat,
+      url('/img/class-fighter.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(255, 0, 0);
+    --dnd-class-background-color-shadow: rgb(138, 14, 14);
+    --background-color-radial-ornament: radial-gradient(
+      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
+      #ffcc00 0,
+      #d9ad00 100%
+    );
+  }
+}
+
+:host(.class-monk) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-4-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-4-lb') left bottom / 33% auto no-repeat,
+      url('/img/test.svg#deco-4-l') left center / 66% auto no-repeat,
+      url('/img/test.svg#deco-4-r') right center / 66% auto no-repeat,
+      url('/img/class-monk.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(255, 127, 244);
+    --dnd-class-background-color-shadow: rgb(196, 77, 186);
+  }
+}
+
+:host(.class-paladin) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-paladin.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(0, 65, 129);
+    --dnd-class-background-color-shadow: rgb(9, 55, 101);
+  }
+}
+
+:host(.class-ranger) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-ranger.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(0, 80, 13);
+    --dnd-class-background-color-shadow: rgb(4, 51, 12);
+  }
+}
+
+:host(.class-rogue) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-rogue.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(0, 0, 0);
+    --dnd-class-background-color-shadow: rgb(51, 52, 60);
+  }
+}
+
+:host(.class-sorcerer) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-sorcerer.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(56, 6, 6);
+    --dnd-class-background-color-shadow: rgb(51, 52, 60);
+  }
+}
+
+:host(.class-warlock) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-warlock.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(103, 2, 76);
+    --dnd-class-background-color-shadow: rgb(66, 5, 50);
+  }
+}
+
+:host(.class-wizard) {
+  .card-container {
+    --dnd-class-background-mask:
+      url('/img/test.svg#corner-2-lt') left top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rt') right top / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-rb') right bottom / 33% auto no-repeat,
+      url('/img/test.svg#corner-2-lb') left bottom / 33% auto no-repeat,
+      url('/img/class-warlock.svg') center center / 33% auto no-repeat;
+    --dnd-class-background-color-base: rgb(5, 57, 180);
+    --dnd-class-background-color-shadow: rgb(13, 44, 114);
+  }
+}
+
 .card-container {
+  --highlight-x: calc(50% + (50% * var(--tiltY) * -1));
+  --highlight-y: calc(50% + (50% * var(--tiltX) * -1));
   --card-background-gradient-angle: 0;
+  --background-color-radial-ornament: radial-gradient(
+    circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
+    #e29f5d -7.62%,
+    #ffc170 14.51%,
+    #dac1a2 32.4%,
+    #ffc170 84.95%,
+    #a25c16 106.96%
+  );
   --transition-timing: 2s;
   --perspective: 1000px;
   --rotationX: 0;
@@ -25,14 +224,13 @@
 
   position: relative;
 
-  place-content: center;
-  height: 100%;
-  width: 100%;
   aspect-ratio: 0.7;
+  transition:
+    --highlight-x 1s ease,
+    --highlight-y 1s ease;
 }
 
 .card-container:active {
-  display: block;
   .content {
     --flipped: 1;
   }
@@ -87,6 +285,41 @@
   --tiltY: -1;
 }
 
+.content {
+  --highlight-x: calc(50% + (50% * var(--tiltY) * -1));
+  --highlight-y: calc(50% + (50% * var(--tiltX) * -1));
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: 0.5rem;
+
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
+  background:
+    url('/img/paper-background.png'),
+    radial-gradient(
+      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
+      var(--dnd-class-background-color-base) 50%,
+      var(--dnd-class-background-color-shadow) 100%
+    );
+  background-blend-mode: multiply;
+
+  transition:
+    --highlight-x 1s ease,
+    --highlight-y 1s ease,
+    transform 500ms ease;
+  transform-style: preserve-3d;
+  transform: perspective(var(--perspective)) rotateX(calc(var(--angle) * var(--tiltX)))
+    rotateY(calc((180deg * var(--flipped)) - (var(--angle) * var(--tiltY)))) rotateZ(var(--rotationZ));
+}
+
 .back {
   position: relative;
   display: block;
@@ -96,75 +329,14 @@
   backface-visibility: hidden;
 
   &::after {
-    --highlight-x: calc(50% + (50% * var(--tiltY)));
-    --highlight-y: calc(50% + (50% * var(--tiltX) * -1));
     content: '';
     display: block;
     position: absolute;
     inset: 0.5rem;
-    mask:
-      url('/img/test.svg#corner-lt') left top / 25% auto no-repeat,
-      url('/img/test.svg#corner-rt') right top / 25% auto no-repeat,
-      url('/img/test.svg#corner-rb') right bottom / 25% auto no-repeat,
-      url('/img/test.svg#corner-lb') left bottom / 25% auto no-repeat,
-      url('/img/test.svg#deco-l') left center / 25% auto no-repeat,
-      url('/img/test.svg#deco-r') right center / 25% auto no-repeat,
-      url('/img/class-barbarian.svg') center center / 50% auto no-repeat;
+    mask: var(--dnd-class-background-mask);
 
     mask-repeat: no-repeat;
-    background: radial-gradient(
-      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
-      #e29f5d -7.62%,
-      #ffc170 14.51%,
-      #dac1a2 32.4%,
-      #ffc170 84.95%,
-      #a25c16 106.96%
-    );
-    transition:
-      --highlight-x 1s ease,
-      --highlight-y 1s ease;
-  }
-}
-
-.content {
-  position: absolute;
-  inset: 0;
-
-  transform-style: preserve-3d;
-
-  background: rgb(147, 51, 51) url('/img/paper-background.png');
-  border-radius: 0.5rem;
-  box-shadow:
-    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12);
-
-  transform: perspective(var(--perspective)) rotateX(calc(var(--angle) * var(--tiltX)))
-    rotateY(calc((180deg * var(--flipped)) - (var(--angle) * var(--tiltY)))) rotateZ(var(--rotationZ));
-  transition: transform 500ms ease;
-
-  border-radius: 1rem;
-
-  &:before {
-    --highlight-x: calc(50% + (50% * var(--tiltY) * -1));
-    --highlight-y: calc(50% + (50% * var(--tiltX) * -1));
-    display: block;
-    content: '';
-    position: absolute;
-    inset: 0;
-    transition:
-      --highlight-x 1s ease,
-      --highlight-y 1s ease;
-    background: radial-gradient(
-      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0.4) 100%
-    );
-    z-index: 100;
-    border-radius: 1rem;
+    background: var(--background-color-radial-ornament);
   }
 }
 

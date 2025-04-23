@@ -1,7 +1,5 @@
 <div class="spell-card-container">
   @for (spell of spells; track spell.id) {
-    <lib-ui-card>
-      <lib-ui-spell-card [spell]="spell"></lib-ui-spell-card>
-    </lib-ui-card>
+    <lib-ui-spell-card [spell]="spell"></lib-ui-spell-card>
   }
 </div>

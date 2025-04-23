@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, effect, input } from '@angular/core';
 
 @Component({
   selector: 'lib-ui-card',
@@ -25,5 +25,15 @@ import { Component } from '@angular/core';
     </div>
   `,
   styleUrl: 'card.component.scss',
+  host: {
+    '[class]': 'cssClass()',
+  },
 })
-export class CardComponent {}
+export class CardComponent {
+  dndClass = input.required<string>();
+  cssClass = computed(() => `class-${this.dndClass().toLowerCase()}`);
+
+  constructor() {
+    effect(() => console.log(this.dndClass()));
+  }
+}
