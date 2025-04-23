@@ -44,3 +44,5 @@ Thumbs.db
 .angular
 
 data/postgres
+
+storybook-static
