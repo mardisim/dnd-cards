@@ -1,4 +1,4 @@
-import { CreateUserDto, UpdateUserDto, User } from '@dnd-cards/server/db';
+import { CreateUserDto, UpdateUserDto, User } from '@dnd-cards/server-db';
 import { IUserModel } from '@interfaces';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';

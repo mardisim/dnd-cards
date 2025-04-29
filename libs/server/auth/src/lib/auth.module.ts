@@ -3,7 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { UserModule } from '@dnd-cards/server/user';
+import { UserModule } from '@dnd-cards/server-user';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
 import { AccessTokenStrategy } from './strategies/access-token.strategy';

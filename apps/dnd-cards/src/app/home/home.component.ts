@@ -1,6 +1,6 @@
 ﻿import { Component, inject } from '@angular/core';
 import { ISignedUser } from '@interfaces';
-import { AuthenticationService } from '@dnd-cards/client/auth';
+import { AuthenticationService } from '@dnd-cards/client-auth';
 import { Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 

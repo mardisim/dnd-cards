@@ -1,5 +1,5 @@
 {
-  "name": "utils",
+  "name": "client-utils",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/client/utils/src",
   "prefix": "",

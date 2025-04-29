@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "dnd-cards": {
+      "type": "library",
+      "root": "libs/dnd-cards",
+      "entryFile": "index",
+      "sourceRoot": "libs/dnd-cards/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/dnd-cards/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true
+  }
+}

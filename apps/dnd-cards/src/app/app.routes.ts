@@ -3,7 +3,7 @@ import { Route } from '@angular/router';
 export const appRoutes: Route[] = [
   {
     path: '',
-    loadChildren: () => import('@dnd-cards/client/registration').then(c => c.REGISTRATION_ROUTES),
+    loadChildren: () => import('@dnd-cards/client-registration').then(c => c.REGISTRATION_ROUTES),
   },
   {
     path: 'home',
@@ -11,7 +11,11 @@ export const appRoutes: Route[] = [
   },
   {
     path: '',
-    loadChildren: () => import('@dnd-cards/client/spell').then(m => m.SPELL_ROUTES),
+    loadChildren: () => import('@dnd-cards/client-spell').then(m => m.SPELL_ROUTES),
+  },
+  {
+    path: '',
+    loadChildren: () => import('@dnd-cards/client-dnd-class').then(m => m.DND_CLASS_ROUTES),
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' },

@@ -4,13 +4,13 @@ import { Router, RouterModule } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { CommonModule } from '@angular/common';
-import { AuthenticationService } from '@dnd-cards/client/auth';
+import { AuthenticationService } from '@dnd-cards/client-auth';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormErrorDirective, FormErrorRootDirective } from '@dnd-cards/client/utils';
+import { FormErrorDirective, FormErrorRootDirective } from '@dnd-cards/client-utils';
 
 @Component({
   standalone: true,

@@ -1,5 +1,4 @@
-<lib-ui-card [dndClass]="spell().dndClasses[0].name">
-  {{ spell().dndClasses | json }}
+<ui-card [dndClass]="dndClass()">
   <article class="spell-container shadow d-flex flex-column">
     <header class="text-truncate" [ngClass]="{ 'spell-concentration': spell().concentration }">
       <h3 class="text-truncate">{{ spell().name }}</h3>
@@ -32,4 +31,4 @@
       <div class="spell-school">{{ level() }} {{ school() }}</div>
     </footer>
   </article>
-</lib-ui-card>
+</ui-card>

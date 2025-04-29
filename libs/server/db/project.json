@@ -1,5 +1,5 @@
 {
-  "name": "db",
+  "name": "server-db",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/server/db/src",
   "projectType": "library",

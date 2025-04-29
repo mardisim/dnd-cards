@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
 import { debounceTime, map, shareReplay } from 'rxjs/operators';
 
 @Component({
-  selector: 'lib-ui-top-nav',
-  templateUrl: './top-nav.component.html',
-  styleUrl: './top-nav.component.css',
+  selector: 'ui-page-grid',
+  templateUrl: './page-grid.component.html',
+  styleUrl: './page-grid.component.css',
   standalone: true,
   imports: [MatToolbarModule, MatButtonModule, MatSidenavModule, MatListModule, MatIconModule, AsyncPipe],
 })
-export class TopNavComponent {
+export class UIPageGridComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(

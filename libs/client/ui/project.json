@@ -1,8 +1,8 @@
 {
-  "name": "ui",
+  "name": "shared-ui",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/client/ui/src",
-  "prefix": "lib",
+  "prefix": "ui",
   "projectType": "library",
   "tags": ["domain:client", "type:feature"],
   "targets": {

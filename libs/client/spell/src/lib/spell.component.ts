@@ -2,12 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpellService } from './spell.service';
 import { ISpellModel } from '@interfaces';
-import { CardComponent, SpellCardComponent } from '@dnd-cards/client/ui';
+import { UISpellCardComponent } from '@dnd-cards/client-ui';
 
 @Component({
   selector: 'lib-spell',
   standalone: true,
-  imports: [CommonModule, SpellCardComponent, CardComponent],
+  imports: [CommonModule, UISpellCardComponent],
   templateUrl: './spell.component.html',
   styleUrl: './spell.component.scss',
 })

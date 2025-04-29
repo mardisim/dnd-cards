@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ICreateUser, ISignedUser } from '@interfaces';
-import { LocalStorageService } from '@dnd-cards/client/utils';
+import { LocalStorageService } from '@dnd-cards/client-utils';
 
 const ACCESS_TOKEN = 'Bearer';
 const REFRESH_TOKEN = 'RefreshToken';

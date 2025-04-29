@@ -46,3 +46,4 @@ Thumbs.db
 data/postgres
 
 storybook-static
+!libs

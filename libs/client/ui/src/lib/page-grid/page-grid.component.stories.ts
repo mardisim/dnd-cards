@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { TopNavComponent } from './top-nav.component';
+import { UIPageGridComponent } from './page-grid.component';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<TopNavComponent> = {
-  component: TopNavComponent,
+const meta: Meta<UIPageGridComponent> = {
+  component: UIPageGridComponent,
   title: 'TopNavComponent',
 };
 export default meta;
-type Story = StoryObj<TopNavComponent>;
+type Story = StoryObj<UIPageGridComponent>;
 
 export const Primary: Story = {
   args: {},

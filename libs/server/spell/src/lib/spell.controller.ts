@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { SpellService } from './spell.service';
-import { AccessTokenGuard } from '@dnd-cards/server/shared';
+import { AccessTokenGuard } from '@dnd-cards/server-shared';
 import { ISpellModel } from '@interfaces';
 import { ApiParam, ApiQuery } from '@nestjs/swagger';
 

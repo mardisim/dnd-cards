@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { SpellCardComponent } from './spell-card.component';
+import { UISpellCardComponent } from './spell-card.component';
 
-const meta: Meta<SpellCardComponent> = { component: SpellCardComponent, title: 'SpellCardComponent' };
+const meta: Meta<UISpellCardComponent> = { component: UISpellCardComponent, title: 'SpellCardComponent' };
 export default meta;
-type Story = StoryObj<SpellCardComponent>;
+type Story = StoryObj<UISpellCardComponent>;
 
 export const Primary: Story = {
   args: {

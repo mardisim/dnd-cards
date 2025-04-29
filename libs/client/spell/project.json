@@ -1,5 +1,5 @@
 {
-  "name": "client-spell",
+  "name": "client-client-spell",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/client/spell/src",
   "prefix": "lib",

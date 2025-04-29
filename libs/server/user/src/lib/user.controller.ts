@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto, UpdateUserDto } from '@dnd-cards/server/db';
-import { AccessTokenGuard } from '@dnd-cards/server/shared';
+import { CreateUserDto, UpdateUserDto } from '@dnd-cards/server-db';
+import { AccessTokenGuard } from '@dnd-cards/server-shared';
 
 @Controller('/users')
 export class UserController {

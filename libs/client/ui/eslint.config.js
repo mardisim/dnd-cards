@@ -23,7 +23,7 @@ module.exports = [
         'error',
         {
           type: 'element',
-          prefix: 'lib',
+          prefix: 'ui',
           style: 'kebab-case',
         },
       ],

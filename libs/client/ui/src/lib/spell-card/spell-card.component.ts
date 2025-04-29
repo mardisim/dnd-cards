@@ -1,18 +1,18 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { CommonModule, JsonPipe } from '@angular/common';
-import { SafeHtmlPipe } from '@dnd-cards/client/utils';
+import { CommonModule } from '@angular/common';
+import { SafeHtmlPipe } from '@dnd-cards/client-utils';
 import { ISpellModel } from '@interfaces';
-import { CardComponent } from '../card/card.component';
+import { UICardComponent } from '../card/card.component';
 
 @Component({
-  selector: 'lib-ui-spell-card',
+  selector: 'ui-spell-card',
   standalone: true,
-  imports: [CommonModule, CardComponent, JsonPipe],
+  imports: [CommonModule, UICardComponent],
   providers: [SafeHtmlPipe],
   templateUrl: './spell-card.component.html',
   styleUrl: './spell-card.component.scss',
 })
-export class SpellCardComponent {
+export class UISpellCardComponent {
   private safeHtml = inject(SafeHtmlPipe);
 
   spell = input.required<ISpellModel>();
@@ -24,5 +24,9 @@ export class SpellCardComponent {
   });
   school = computed(() => {
     return this.spell().school.name;
+  });
+  dndClass = computed(() => {
+    const dndClasses = this.spell().dndClasses;
+    return dndClasses.length > 0 ? dndClasses[0].name : 'wizard';
   });
 }

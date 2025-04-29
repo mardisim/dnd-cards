@@ -1,9 +1,9 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
-import { LoginUserDto, CreateUserDto } from '@dnd-cards/server/db';
+import { LoginUserDto, CreateUserDto } from '@dnd-cards/server-db';
 import { AuthService } from './auth.service';
 import { Response, Request } from 'express';
-import { AccessTokenGuard } from '@dnd-cards/server/shared';
-import { RefreshTokenGuard } from '@dnd-cards/server/shared';
+import { AccessTokenGuard } from '@dnd-cards/server-shared';
+import { RefreshTokenGuard } from '@dnd-cards/server-shared';
 
 @Controller('/auth')
 export class AuthController {

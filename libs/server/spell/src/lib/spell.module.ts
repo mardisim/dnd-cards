@@ -1,4 +1,4 @@
-import { Spell } from '@dnd-cards/server/db';
+import { Spell } from '@dnd-cards/server-db';
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SpellService } from './spell.service';
