@@ -1,45 +1,158 @@
-﻿<mat-card>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <mat-card-header>
-      <mat-card-title>Register</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field>
-        <mat-label>First Name</mat-label>
-        <input matInput [formControl]="$any(registerForm.controls['firstName'])" required />
-        <mat-error *hasError="'required'">First name is required</mat-error>
-      </mat-form-field>
+﻿<div class="card">
+  <div class="card-header">Register</div>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      @let name = registerForm.controls.firstName;
+      @let nameValid = name.invalid && (name.dirty || name.touched);
+      <div class="mb-3">
+        <label for="first-name" class="form-label">First name</label>
+        <div class="input-group has-validation">
+          <input
+            id="first-name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': nameValid }"
+            formControlName="firstName"
+            required
+            aria-label="Enter first name"
+          />
+          @if (nameValid) {
+            @if (name.hasError('required')) {
+              <div class="invalid-feedback">Name is required.</div>
+            }
+          }
+        </div>
+      </div>
+      @let lastName = registerForm.controls.lastName;
+      @let lastNameValid = lastName.invalid && (lastName.dirty || lastName.touched);
+      <div class="mb-3">
+        <label for="last-name" class="form-label">Last name</label>
+        <div class="input-group has-validation">
+          <input
+            id="last-name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': lastNameValid }"
+            formControlName="lastName"
+            required
+            aria-label="Enter last name"
+          />
+          @if (lastNameValid) {
+            @if (lastName.hasError('required')) {
+              <div class="invalid-feedback">Last name is required.</div>
+            }
+          }
+        </div>
+      </div>
 
-      <mat-form-field>
-        <mat-label>Last Name</mat-label>
-        <input matInput [formControl]="$any(registerForm.controls['lastName'])" required />
-        <mat-error *hasError="'required'">Last name is required</mat-error>
-      </mat-form-field>
+      @let username = registerForm.controls.username;
+      @let usernameValid = username.invalid && (username.dirty || username.touched);
+      <div class="mb-3">
+        <label for="user-name" class="form-label">Username</label>
+        <div class="input-group has-validation">
+          <input
+            id="user-name"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': usernameValid }"
+            formControlName="username"
+            required
+            aria-label="Enter user name"
+          />
+          @if (usernameValid) {
+            @if (username.hasError('required')) {
+              <div class="invalid-feedback">Username is required.</div>
+            }
+            @if (username.hasError('minLength')) {
+              <div class="invalid-feedback">Username must be at least 4 characters</div>
+            }
+          }
+        </div>
+      </div>
 
-      <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input matInput [formControl]="$any(registerForm.controls['username'])" required />
-        <mat-error *hasError="'required'">Username is required</mat-error>
-      </mat-form-field>
+      @let password = registerForm.controls.password;
+      @let passwordValid = password.invalid && (password.dirty || password.touched);
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group has-validation">
+          <input
+            id="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': passwordValid }"
+            formControlName="password"
+            required
+            aria-label="Enter password"
+          />
+        </div>
 
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input matInput type="password" [formControl]="$any(registerForm.controls['password'])" required />
-        <mat-error *hasError="'required'">Password is required</mat-error>
-        <mat-error *hasError="'minLength'">Password must be at least 6 characters</mat-error>
-      </mat-form-field>
+        @if (password.dirty) {
+          <div class="form-text">
+            <p>Password has to meet the following requirements:</p>
+            <div [ngClass]="password.hasError('minlength') ? 'text-danger' : 'text-success'">
+              at least 6 characters long
+            </div>
+            <div [ngClass]="password.hasError('containsSpecialCharacters') ? 'text-danger' : 'text-success'">
+              contain a special character
+            </div>
+            <div [ngClass]="password.hasError('containsUppercase') ? 'text-danger' : 'text-success'">
+              contain an uppercase character
+            </div>
+            <div [ngClass]="password.hasError('containsLowercase') ? 'text-danger' : 'text-success'">
+              contain a lowercase character
+            </div>
+            <div [ngClass]="password.hasError('containsNumbers') ? 'text-danger' : 'text-success'">
+              contain a numeric character
+            </div>
+          </div>
+        }
+      </div>
 
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput type="email" [formControl]="$any(registerForm.controls['email'])" required />
-        <mat-error *hasError="'required'">Email is required</mat-error>
-        <mat-error *hasError="'email'">Email must be a valid email address</mat-error>
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-flat-button color="primary" type="submit">Register</button>
+      @let passwordConfirm = registerForm.controls.passwordConfirm!;
+      @let passwordConfirmValid = passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched);
+      <div class="mb-3">
+        <label for="password-confirm" class="form-label">Confirm password</label>
+        <div class="input-group has-validation">
+          <input
+            id="password-confirm"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': passwordConfirmValid }"
+            formControlName="passwordConfirm"
+            required
+            aria-label="Enter password again"
+          />
+          @if (passwordConfirmValid) {
+            @if (passwordConfirm.hasError('isEqualWith')) {
+              <div class="invalid-feedback">Passwords do not match.</div>
+            }
+          }
+        </div>
+      </div>
 
-      <button mat-button type="button" routerLink="/login">Sign in</button>
-    </mat-card-actions>
-  </form>
-</mat-card>
+      @let email = registerForm.controls.email;
+      @let emailValid = email.invalid && (email.dirty || email.touched);
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <div class="input-group has-validation">
+          <input
+            id="email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': emailValid }"
+            formControlName="email"
+            required
+            aria-label="Enter email"
+          />
+          @if (emailValid) {
+            @if (email.hasError('required')) {
+              <div class="invalid-feedback">Email is required.</div>
+            }
+            @if (email.hasError('email')) {
+              <div class="invalid-feedback">Email address is not valid</div>
+            }
+          }
+        </div>
+      </div>
+      <div class="mb-3 d-flex justify-content-end align-items-center gap-3">
+        <span>You already have an account?</span>
+        <button type="button" class="btn btn-secondary" routerLink="/login">Sign in</button>
+        <button type="submit" class="btn btn-primary" [disabled]="registerForm.disabled">Sign up</button>
+      </div>
+    </form>
+  </div>
+</div>

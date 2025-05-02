@@ -1,42 +1,35 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { AuthenticationService } from '@dnd-cards/client-auth';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormErrorDirective, FormErrorRootDirective } from '@dnd-cards/client-utils';
+import { ILoginUser } from '@interfaces';
+import { ToastService, ToastType } from '@dnd-cards/client-ui';
 
+type ILoginUserForm = {
+  [K in keyof ILoginUser]: FormControl<ILoginUser[K]>;
+};
 @Component({
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    FormErrorRootDirective,
-    FormErrorDirective,
-    MatSnackBarModule,
-  ],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: 'login.component.html',
   styleUrl: 'login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'd-flex align-items-center justify-content-center py-5',
+  },
 })
-export class LoginComponent implements OnInit {
-  private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
+export class LoginComponent {
+  private readonly router = inject(Router);
+  private readonly toastService = inject(ToastService);
   private authenticationService = inject(AuthenticationService);
-  private snackBar = inject(MatSnackBar);
 
-  loginForm!: FormGroup;
+  loginForm = new FormGroup<ILoginUserForm>({
+    username: new FormControl('', { nonNullable: true }),
+    password: new FormControl('', { nonNullable: true }),
+  });
 
   constructor() {
     if (this.authenticationService.isLoggedIn()) {
@@ -44,24 +37,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-  }
-
   onSubmit() {
+    console.log('onSubmit', this.loginForm.valid);
+
     if (this.loginForm.invalid) {
       return;
     }
 
     this.authenticationService
-      .login(this.loginForm?.get('username')?.value, this.loginForm?.get('password')?.value)
+      .login(this.loginForm.value as ILoginUser)
       .pipe(take(1))
       .subscribe({
         error: ({ error: { message } }) => {
-          this.snackBar.open(message, '', { duration: 1000 });
+          this.toastService.show(message, ToastType.danger);
         },
         complete: () => {
           this.router.navigateByUrl('/home');

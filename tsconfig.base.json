@@ -16,9 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@dnd-cards/client-auth": ["libs/client/auth/src/index.ts"],
+      "@dnd-cards/client-dnd-class": ["libs/client/dnd-class/src/index.ts"],
       "@dnd-cards/client-registration": ["libs/client/registration/src/index.ts"],
       "@dnd-cards/client-spell": ["libs/client/spell/src/index.ts"],
-      "@dnd-cards/client-dnd-class": ["libs/client/dnd-class/src/index.ts"],
       "@dnd-cards/client-ui": ["libs/client/ui/src/index.ts"],
       "@dnd-cards/client-utils": ["libs/client/utils/src/index.ts"],
       "@dnd-cards/dnd-card": ["libs/client/dnd-card/src/index.ts"],

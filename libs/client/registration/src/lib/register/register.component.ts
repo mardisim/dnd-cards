@@ -1,57 +1,58 @@
-﻿import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+﻿import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '@dnd-cards/client-auth';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { FormErrorDirective, FormErrorRootDirective } from '@dnd-cards/client-utils';
+import { ICreateUser } from '@interfaces';
+import { CustomValidators } from '@dnd-cards/client-utils';
+import { ToastService, ToastType } from '@dnd-cards/client-ui';
 
+type ICreateUserForm = {
+  [K in keyof ICreateUser]: FormControl<ICreateUser[K]>;
+} & {
+  passwordConfirm?: FormControl<string | null>;
+};
 @Component({
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    FormErrorRootDirective,
-    FormErrorDirective,
-  ],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: 'register.component.html',
   styleUrl: 'register.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'd-flex align-items-center justify-content-center py-5',
+  },
 })
-export class RegisterComponent implements OnInit {
-  private formBuilder = inject(FormBuilder);
+export class RegisterComponent {
+  private fb = inject(NonNullableFormBuilder);
   private router = inject(Router);
+  private readonly toastService = inject(ToastService);
   private authenticationService = inject(AuthenticationService);
-  private snackBar = inject(MatSnackBar);
 
-  registerForm!: FormGroup;
+  registerForm = new FormGroup<ICreateUserForm>({
+    firstName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    lastName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    username: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    password: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, CustomValidators.passwordStrength({ minLength: 6 })],
+    }),
+    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
+  });
 
   constructor() {
     if (this.authenticationService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
-  }
 
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.email]],
-    });
+    this.registerForm.addControl(
+      'passwordConfirm',
+      new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, CustomValidators.isEqualWith(this.registerForm.controls.password)],
+      }),
+    );
   }
 
   onSubmit() {
@@ -59,16 +60,18 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    this.registerForm.removeControl('passwordConfirm');
+
     this.authenticationService
-      .register(this.registerForm.value)
+      .register(this.registerForm.value as ICreateUser)
       .pipe(first())
       .subscribe({
         complete: () => {
-          this.snackBar.open('Registration successfull');
+          this.toastService.show('Successfully Registered', ToastType.success);
           this.router.navigate(['/login']);
         },
         error: ({ error: { message } }) => {
-          this.snackBar.open(message);
+          this.toastService.show(message, ToastType.danger);
         },
       });
   }
