@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DndClassComponent } from './dnd-class.component';
+import { DnDClassComponent } from './dnd-class.component';
 
 describe('DndClassComponent', () => {
-  let component: DndClassComponent;
-  let fixture: ComponentFixture<DndClassComponent>;
+  let component: DnDClassComponent;
+  let fixture: ComponentFixture<DnDClassComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DndClassComponent],
+      imports: [DnDClassComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DndClassComponent);
+    fixture = TestBed.createComponent(DnDClassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

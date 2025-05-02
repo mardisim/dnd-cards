@@ -3,8 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { DnDClassController } from './dnd-class.controller';
 import { DnDClassService } from './dnd-class.service';
-import { DndClass } from '../../../db/src/lib/entities/dndclass.entity';
 import { DnDClassMiddleware } from './middleware/dnd-class.middleware';
+import { DndClass } from '@dnd-cards/server-db';
 
 @Module({
   imports: [TypeOrmModule.forFeature([DndClass])],

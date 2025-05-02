@@ -1,22 +1,19 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DnDClassService } from './dnd-class.service';
-import { IDndClassModel } from '@interfaces';
+import { DnDClassStore } from './dnd-class.store';
 
 @Component({
   selector: 'lib-dnd-card',
   imports: [CommonModule],
-  template: `<p>DndClass works!</p>`,
+  templateUrl: 'dnd-class.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DndClassComponent implements OnInit {
-  private dndClassService = inject(DnDClassService);
-  dndClasses: IDndClassModel[] = [];
+export class DnDClassComponent implements OnInit {
+  dndClassStore = inject(DnDClassStore);
+  dndClasses = this.dndClassStore.dndClasses;
 
   ngOnInit() {
-    this.dndClassService.getAllDnDClasses().subscribe((dndClasses: IDndClassModel[]) => {
-      this.dndClasses = dndClasses;
-    });
+    this.dndClassStore.loadAllDnDClasses();
   }
 }

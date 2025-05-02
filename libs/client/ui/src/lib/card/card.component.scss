@@ -38,20 +38,20 @@
 
 :host(.class-artificer) {
   .card-container {
-    @include dndClassBackground('artificer', 3, rgb(0, 196, 167), rgb(9, 94, 147));
+    @include dndClassBackground('artificer', 1, rgb(0, 196, 167), rgb(9, 94, 147));
   }
 }
 
 :host(.class-barbarian) {
   .card-container {
-    @include dndClassBackground('barbarian', 1, rgb(147, 51, 51), rgb(122, 40, 40));
+    @include dndClassBackground('barbarian', 2, rgb(147, 51, 51), rgb(122, 40, 40));
     --background-color-radial-class: var(--background-color-radial-bronze);
   }
 }
 
 :host(.class-bard) {
   .card-container {
-    @include dndClassBackground('bard', 2, rgb(196, 46, 0), rgb(137, 48, 0));
+    @include dndClassBackground('bard', 3, rgb(196, 46, 0), rgb(137, 48, 0));
   }
 }
 
@@ -64,33 +64,33 @@
 
 :host(.class-druid) {
   .card-container {
-    @include dndClassBackground('druid', 2, rgb(18, 148, 89), rgb(9, 104, 61));
+    @include dndClassBackground('druid', 1, rgb(18, 148, 89), rgb(9, 104, 61));
   }
 }
 
 :host(.class-fighter) {
   .card-container {
-    @include dndClassBackground('fighter', 4, rgb(255, 0, 0), rgb(138, 14, 14));
+    @include dndClassBackground('fighter', 2, rgb(255, 0, 0), rgb(138, 14, 14));
     --background-color-radial-class: #ffcc00 0, #d9ad00 100%;
   }
 }
 
 :host(.class-monk) {
   .card-container {
-    @include dndClassBackground('monk', 4, rgb(255, 127, 244), rgb(196, 77, 186));
+    @include dndClassBackground('monk', 3, rgb(255, 127, 244), rgb(196, 77, 186));
   }
 }
 
 :host(.class-paladin) {
   .card-container {
-    @include dndClassBackground('paladin', 2, rgb(0, 65, 129), rgb(9, 55, 101));
-    --background-color-radial-class: --background-color-radial-silver;
+    @include dndClassBackground('paladin', 4, rgb(0, 65, 129), rgb(9, 55, 101));
+    --background-color-radial-class: var(--background-color-radial-silver);
   }
 }
 
 :host(.class-ranger) {
   .card-container {
-    @include dndClassBackground('ranger', 2, rgb(0, 80, 13), rgb(4, 51, 12));
+    @include dndClassBackground('ranger', 1, rgb(0, 80, 13), rgb(4, 51, 12));
   }
 }
 
@@ -102,13 +102,13 @@
 
 :host(.class-sorcerer) {
   .card-container {
-    @include dndClassBackground('sorcerer', 2, rgb(56, 6, 6), rgb(51, 52, 60));
+    @include dndClassBackground('sorcerer', 3, rgb(56, 6, 6), rgb(51, 52, 60));
   }
 }
 
 :host(.class-warlock) {
   .card-container {
-    @include dndClassBackground('warlock', 2, rgb(103, 2, 76), rgb(66, 5, 50));
+    @include dndClassBackground('warlock', 4, rgb(103, 2, 76), rgb(66, 5, 50));
   }
 }
 

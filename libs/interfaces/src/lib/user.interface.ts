@@ -4,10 +4,11 @@ export interface IUserModel {
   password: string;
   firstName: string;
   lastName: string;
+  email: string;
   refreshToken: string | null;
 }
 
-export type ICreateUser = Omit<IUserModel, 'id'>;
+export type ICreateUser = Omit<IUserModel, 'id' | 'refreshToken'>;
 
 export type IJWTPayloadUser = Omit<IUserModel, 'id' | 'password'>;
 

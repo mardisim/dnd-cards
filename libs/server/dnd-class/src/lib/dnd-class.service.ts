@@ -11,11 +11,7 @@ export class DnDClassService {
   ) {}
 
   async getAllDnDClasses(): Promise<DndClass[]> {
-    return await this.dndClassRepository.find({
-      relations: {
-        spells: true,
-      },
-    });
+    return await this.dndClassRepository.find();
   }
 
   async getDnDClass(id: number): Promise<DndClass | null> {
