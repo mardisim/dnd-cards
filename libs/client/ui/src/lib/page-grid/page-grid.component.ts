@@ -1,27 +1,29 @@
-import { Component, inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { Observable } from 'rxjs';
-import { debounceTime, map, shareReplay } from 'rxjs/operators';
+import { Component, inject, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'ui-page-grid',
   templateUrl: './page-grid.component.html',
-  styleUrl: './page-grid.component.css',
+  styleUrl: './page-grid.component.scss',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatSidenavModule, MatListModule, MatIconModule, AsyncPipe],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  host: {
+    class: 'd-grid h-100',
+    '[class.sidebar-open]': 'sidebarOpen()',
+  },
 })
 export class UIPageGridComponent {
-  private breakpointObserver = inject(BreakpointObserver);
+  private document = inject(DOCUMENT);
+  sidebarOpen = signal<boolean>(false);
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    debounceTime(50),
-    map(result => result.matches),
-    shareReplay(),
-  );
+  constructor() {
+    //fromEvent(this.document, 'click').subscribe(event => this.toggleMenu(event, false));
+  }
+
+  toggleMenu(event: Event, isOpen?: boolean) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.sidebarOpen.set(isOpen !== undefined ? isOpen : !this.sidebarOpen());
+  }
 }
