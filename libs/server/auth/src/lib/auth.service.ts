@@ -81,7 +81,7 @@ export class AuthService {
     return { ...newUser, ...tokens };
   }
 
-  async loginUser(loginUserDto: LoginUserDto): Promise<ICreateUser> {
+  async loginUser(loginUserDto: LoginUserDto): Promise<Partial<ICreateUser>> {
     const user = await this.userService.getUserByUsername(loginUserDto.username);
     if (!user) {
       throw new BadRequestException('User does not exist');
@@ -92,15 +92,22 @@ export class AuthService {
     }
     const tokens = await this.getTokens(user.id, loginUserDto.username);
     await this.updateRefreshToken(user.id, tokens.refreshToken);
-    return { ...user, ...tokens };
+    const { password, ...outObject } = { ...user, ...tokens };
+    return outObject;
   }
 
-  async refreshTokens(userId: number, refreshToken: string) {
-    const user = await this.userService.getUserById(userId);
-    if (!user || !user.refreshToken) {
+  async refreshTokens(refreshToken: string) {
+    let refreshTokenMatches = false;
+    const tokenPayload = await this.jwtService.verify(refreshToken, {
+      secret: this.configService.get<string>('AUTH_JWT_REFRESH_SECRET'),
+    });
+    if (!(tokenPayload && tokenPayload.username)) {
       throw new ForbiddenException('Access Denied');
     }
-    const refreshTokenMatches = await argon2.verify(user.refreshToken, refreshToken);
+    const user = await this.userService.getUserByUsername(tokenPayload.username);
+    if (user && user.refreshToken) {
+      refreshTokenMatches = await argon2.verify(user.refreshToken, refreshToken);
+    }
     if (!refreshTokenMatches) {
       throw new ForbiddenException('Access Denied');
     }
