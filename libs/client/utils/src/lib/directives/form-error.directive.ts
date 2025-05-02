@@ -27,6 +27,7 @@ export interface HasErrorContext {
 
 @Directive({
   selector: '[hasError]',
+  providers: [FormErrorRootDirective],
 })
 export class FormErrorDirective implements OnInit, OnDestroy {
   private hasErrorRoot = inject(FormErrorRootDirective);

@@ -1,4 +1,4 @@
-import { Component, computed, effect, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'ui-card',
@@ -32,8 +32,4 @@ import { Component, computed, effect, input } from '@angular/core';
 export class UICardComponent {
   dndClass = input<string>('wizard');
   cssClass = computed(() => `class-${this.dndClass().toLowerCase()}`);
-
-  constructor() {
-    effect(() => console.log(this.dndClass()));
-  }
 }

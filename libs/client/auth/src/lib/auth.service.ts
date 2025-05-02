@@ -2,7 +2,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { ICreateUser, ISignedUser } from '@interfaces';
+import { ICreateUser, ILoginUser, ISignedUser } from '@interfaces';
 import { LocalStorageService } from '@dnd-cards/client-utils';
 
 const ACCESS_TOKEN = 'Bearer';
@@ -50,7 +50,7 @@ export class AuthenticationService {
     );
   }
 
-  login(username: string, password: string) {
+  login({ username, password }: ILoginUser) {
     return this.http.post<ISignedUser>(`${AUTH_API_URL}/login`, { username, password }).pipe(
       map(user => {
         if (user && user.accessToken && user.refreshToken) {

@@ -8,7 +8,7 @@ import { AuthenticationService } from '../auth.service';
 export class ErrorInterceptor implements HttpInterceptor {
   private authenticationService = inject(AuthenticationService);
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError(err => {
         if (err.status === 401) {

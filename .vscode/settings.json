@@ -3,6 +3,7 @@
     "editor.formatOnSave": true,
     "notebook.formatOnSave.enabled": false,
     "editor.codeActionsOnSave": {
+        "source.addMissingImports.ts": "always",
         "source.removeUnusedImports": "explicit"
     },
     "emmet.preferences": {

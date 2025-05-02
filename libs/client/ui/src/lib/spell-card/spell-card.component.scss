@@ -23,8 +23,8 @@
 
   > header {
     position: relative;
-    border-top-left-radius: var(--card-border-rardius);
-    border-top-right-radius: var(--card-border-rardius);
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
     margin-bottom: 1.5rem;
     background-color: var(--card-content-background-color);
     text-align: center;
@@ -86,7 +86,7 @@
     background-color: var(--card-content-background-color);
     padding: 5px;
     overflow: scroll;
-    border-radius: var(--card-border-rardius);
+    border-radius: var(--card-border-radius);
   }
 
   footer {
