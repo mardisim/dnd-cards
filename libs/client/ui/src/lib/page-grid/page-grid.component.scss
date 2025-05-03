@@ -36,28 +36,12 @@ nav {
 
 .list-group-item {
   white-space: nowrap;
-}
-
-@include media-breakpoint-only(md) {
-  aside nav {
-    transition: max-width 0.5s ease-out;
-    max-width: 4rem;
-
-    .link-caption {
-      display: none;
-    }
-
-    &:hover {
-      max-width: 100%;
-
-      .link-caption {
-        display: inline;
-      }
-    }
+  i {
+    font-size: 1.5rem;
   }
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   :host(.sidebar-open) {
     aside {
       background-color: #00000022;
@@ -68,18 +52,58 @@ nav {
   }
   aside {
     position: absolute;
-    inset: 0;
+    user-select: unset;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
 
     nav {
-      transition: margin 0.5s ease-out;
+      pointer-events: all;
+      transition-property: margin, max-width;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-out;
+    }
+  }
+}
+@include media-breakpoint-only(md) {
+  main {
+    padding-left: 4rem;
+  }
+  aside {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    nav {
+      max-width: 4rem;
+
+      .link-caption {
+        display: none;
+      }
+
+      .list-group-item i {
+        font-size: 2rem;
+      }
+      &:hover {
+        max-width: 100%;
+
+        .link-caption {
+          display: inline;
+        }
+      }
     }
   }
 }
 
+@include media-breakpoint-down(sm) {
+  aside {
+    inset: 0;
+  }
+}
 @include media-breakpoint-only(sm) {
   :host(.sidebar-open) {
     aside {
-      background-color: #00000022;
+      inset: 0;
       nav {
         margin-left: 0;
       }
@@ -94,21 +118,18 @@ nav {
     }
   }
 }
-@include media-breakpoint-down(sm) {
+
+@include media-breakpoint-only(xs) {
   main {
     flex-direction: column;
   }
-
+  :host(:not(.sidebar-open)) aside nav {
+    margin-top: -100%;
+  }
   aside {
     nav {
       max-width: unset;
       max-height: fit-content;
     }
-  }
-}
-
-@include media-breakpoint-only(xs) {
-  :host(:not(.sidebar-open)) aside nav {
-    margin-top: -100%;
   }
 }

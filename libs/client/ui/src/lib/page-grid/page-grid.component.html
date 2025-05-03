@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <header class="navbar bg-body-tertiary">
   <nav class="container-fluid">
     <div class="navbar-brand">
@@ -12,23 +14,38 @@
     </form>
   </nav>
 </header>
-<main class="d-flex position-relative overflow-hidden">
+<main class="d-flex position-relative overflow-hidden" (click)="toggleMenu($event, false)">
   <aside>
     <nav>
       <ul class="list-group list-group-flush nav">
         <li class="list-group-item">
-          <a [routerLink]="'spells'" routerLinkActive="active"
-            ><i class="bi bi-house"></i> <span class="link-caption"> Home</span></a
+          <a
+            [routerLink]="'spells'"
+            routerLinkActive="active"
+            class="d-flex align-items-center gap-3"
+            tooltip="Home"
+            placement="right"
+            ><i class="bi bi-house"></i> <span class="link-caption">Home</span></a
           >
         </li>
         <li class="list-group-item">
-          <a [routerLink]="['spell']" routerLinkActive="active"
-            ><i class="bi bi-magic"></i> <span class="link-caption"> Spells</span></a
+          <a
+            [routerLink]="['spell']"
+            routerLinkActive="active"
+            class="d-flex align-items-center gap-3"
+            tooltip="Spells"
+            placement="right"
+            ><i class="bi bi-magic"></i> <span class="link-caption">Spells</span></a
           >
         </li>
         <li class="list-group-item">
-          <a [routerLink]="['dnd-classes']" routerLinkActive="active"
-            ><i class="bi bi-person-circle"></i> <span class="link-caption"> Classes</span></a
+          <a
+            [routerLink]="['dnd-classes']"
+            routerLinkActive="active"
+            class="d-flex align-items-center gap-3"
+            tooltip="Classes"
+            placement="right"
+            ><i class="bi bi-person-circle"></i> <span class="link-caption">Classes</span></a
           >
         </li>
       </ul>

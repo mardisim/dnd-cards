@@ -17,10 +17,6 @@ export class UIPageGridComponent {
   private document = inject(DOCUMENT);
   sidebarOpen = signal<boolean>(false);
 
-  constructor() {
-    //fromEvent(this.document, 'click').subscribe(event => this.toggleMenu(event, false));
-  }
-
   toggleMenu(event: Event, isOpen?: boolean) {
     event.preventDefault();
     event.stopPropagation();
