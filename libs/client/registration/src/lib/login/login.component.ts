@@ -38,8 +38,6 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log('onSubmit', this.loginForm.valid);
-
     if (this.loginForm.invalid) {
       return;
     }

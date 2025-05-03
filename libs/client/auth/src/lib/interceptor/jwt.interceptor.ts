@@ -37,6 +37,8 @@ export class JwtInterceptor implements HttpInterceptor {
   }
 
   private handleTokenExpired(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    console.log('#### handleTokenExpired');
+
     return this.authenticationService
       .refreshAccessToken()
       .pipe(switchMap((token: TokenResponse) => next.handle(this.addToken(request, token.accessToken))));

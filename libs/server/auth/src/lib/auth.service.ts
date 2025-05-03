@@ -54,10 +54,10 @@ export class AuthService {
     }
   }
 
-  async updateRefreshToken(userId: number, refreshToken: string) {
-    const hashedRefreshToken = await this.getHash(refreshToken);
+  async updateRefreshToken(userId: number, oldRefreshToken: string) {
+    const refreshToken = await this.getHash(oldRefreshToken);
     this.userService.updateUser(userId, {
-      refreshToken: hashedRefreshToken,
+      refreshToken,
     });
   }
 

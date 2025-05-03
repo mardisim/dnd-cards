@@ -45,6 +45,9 @@ export class AuthenticationService {
         this.setTokens([response.accessToken, response.refreshToken]);
       }),
       catchError(error => {
+        console.log('####', error);
+
+        this.removeTokens();
         throw error;
       }),
     );
