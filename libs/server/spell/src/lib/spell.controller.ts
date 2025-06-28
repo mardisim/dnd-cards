@@ -34,7 +34,7 @@ export class SpellController {
     description: 'Spell id number',
     type: 'integer',
   })
-  async getSpells(@Param() id: number): Promise<ISpellModel | null> {
+  async getSpells(@Param() id: string): Promise<ISpellModel | null> {
     return await this.spellService.getSpell(id);
   }
 }

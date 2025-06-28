@@ -74,6 +74,7 @@
         <div class="input-group has-validation">
           <input
             id="password"
+            type="password"
             class="form-control"
             [ngClass]="{ 'is-invalid': passwordValid }"
             formControlName="password"
@@ -111,6 +112,7 @@
         <div class="input-group has-validation">
           <input
             id="password-confirm"
+            type="password"
             class="form-control"
             [ngClass]="{ 'is-invalid': passwordConfirmValid }"
             formControlName="passwordConfirm"
@@ -132,6 +134,7 @@
         <div class="input-group has-validation">
           <input
             id="email"
+            type="email"
             class="form-control"
             [ngClass]="{ 'is-invalid': emailValid }"
             formControlName="email"
@@ -151,7 +154,7 @@
       <div class="mb-3 d-flex justify-content-end align-items-center gap-3">
         <span>You already have an account?</span>
         <button type="button" class="btn btn-secondary" routerLink="/login">Sign in</button>
-        <button type="submit" class="btn btn-primary" [disabled]="registerForm.disabled">Sign up</button>
+        <button type="submit" class="btn btn-primary">Sign up</button>
       </div>
     </form>
   </div>

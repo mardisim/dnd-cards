@@ -1,15 +1,13 @@
 import { IDndClassModel } from '@interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { Spell } from '../entities/spell.entity';
+import { Spell } from '../entities/spell.entity.old';
 
 export class DndClassDto implements IDndClassModel {
-  @ApiProperty({
-    type: Number,
-  })
-  @IsNumber()
+  @ApiProperty()
+  @IsString()
   @IsNotEmpty()
-  id!: number;
+  id!: string;
 
   @ApiProperty()
   @IsString()

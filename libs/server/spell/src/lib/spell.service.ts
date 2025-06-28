@@ -19,7 +19,7 @@ export class SpellService {
     });
   }
 
-  async getSpell(id: number): Promise<Spell | null> {
+  async getSpell(id: string): Promise<Spell | null> {
     return await this.spellRepository.findOne({
       where: { id },
       relations: {

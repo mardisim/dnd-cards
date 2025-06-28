@@ -1,5 +1,5 @@
-﻿import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+﻿import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { first } from 'rxjs/operators';
 
@@ -19,13 +19,11 @@ type ICreateUserForm = {
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: 'register.component.html',
   styleUrl: 'register.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'd-flex align-items-center justify-content-center py-5',
   },
 })
 export class RegisterComponent {
-  private fb = inject(NonNullableFormBuilder);
   private router = inject(Router);
   private readonly toastService = inject(ToastService);
   private authenticationService = inject(AuthenticationService);

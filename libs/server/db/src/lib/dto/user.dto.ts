@@ -1,6 +1,6 @@
 import { ICreateUser, ILoginUser, IUserModel } from '@interfaces';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class LoginUserDto implements ILoginUser {
   @ApiProperty()
@@ -47,9 +47,9 @@ export class CreateUserDto implements ICreateUser {
 
 export class UpdateUserDto implements IUserModel {
   @ApiProperty()
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  id!: number;
+  id!: string;
 
   @ApiProperty()
   @IsString()

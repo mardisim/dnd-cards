@@ -2,7 +2,7 @@ import { IDndClassModel } from './dndclass.interface';
 import { ISchoolModel } from './school.interface';
 
 export interface ISpellModel {
-  id: number;
+  id: string;
   name: string;
   description: string;
   ingredients: string;
@@ -18,3 +18,9 @@ export interface ISpellModel {
   school: ISchoolModel;
   dndClasses: IDndClassModel[];
 }
+
+export type SpellState = {
+  spells: ISpellModel[];
+  isLoading: boolean;
+  filter: { query: string; order: 'asc' | 'desc' };
+};

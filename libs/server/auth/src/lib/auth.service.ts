@@ -15,7 +15,8 @@ export class AuthService {
     private readonly configService: ConfigService,
     private readonly userService: UserService,
   ) {}
-  async getTokens(id: number, username: string) {
+
+  async getTokens(id: string, username: string) {
     const { firstName, lastName } = await this.userService.getUserById(id);
     const payload = { username, firstName, lastName };
     const [accessToken, refreshToken] = await Promise.all([
@@ -54,7 +55,7 @@ export class AuthService {
     }
   }
 
-  async updateRefreshToken(userId: number, oldRefreshToken: string) {
+  async updateRefreshToken(userId: string, oldRefreshToken: string) {
     const refreshToken = await this.getHash(oldRefreshToken);
     this.userService.updateUser(userId, {
       refreshToken,

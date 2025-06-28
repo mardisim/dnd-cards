@@ -1,23 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpellService } from './spell.service';
-import { ISpellModel } from '@interfaces';
-import { UISpellCardComponent } from '@dnd-cards/client-ui';
+import { UICardListComponent } from '@dnd-cards/client-ui';
+import { SpellStore } from './spell.store';
 
 @Component({
   selector: 'lib-spell',
   standalone: true,
-  imports: [CommonModule, UISpellCardComponent],
+  imports: [CommonModule, UICardListComponent],
   templateUrl: './spell.component.html',
   styleUrl: './spell.component.scss',
 })
-export class SpellComponent implements OnInit {
-  private spellService = inject(SpellService);
-  spells: ISpellModel[] = [];
+export class SpellComponent {
+  private spellStore = inject(SpellStore);
+  spells = this.spellStore.spells;
 
-  ngOnInit() {
-    this.spellService.getAllSpells().subscribe(spells => {
-      this.spells = spells;
-    });
+  constructor() {
+    this.spellStore.loadAllSpells();
   }
 }

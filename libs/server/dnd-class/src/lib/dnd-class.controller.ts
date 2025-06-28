@@ -31,10 +31,9 @@ export class DnDClassController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'Spell id number',
-    type: 'integer',
+    description: 'DnD Class id',
   })
-  async getSpells(@Param() id: number): Promise<IDndClassModel | null> {
+  async getSpells(@Param('id') id: string): Promise<IDndClassModel | null> {
     return await this.dndClassService.getDnDClass(id);
   }
 }

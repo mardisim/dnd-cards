@@ -1,10 +1,14 @@
+import { ISpellModel } from './spell.interface';
+
 export interface IDndClassModel {
-  id: number;
+  id: string;
   name: string;
+  spells: ISpellModel[];
 }
 
 export type DnDClassState = {
   dndClasses: IDndClassModel[];
+  spells: ISpellModel[];
   isLoading: boolean;
   filter: { query: string; order: 'asc' | 'desc' };
 };

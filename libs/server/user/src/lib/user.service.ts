@@ -19,15 +19,15 @@ export class UserService {
     return (await this.userRepository.find({ where: { username } }))[0];
   }
 
-  async getUserById(id: number): Promise<IUserModel> {
+  async getUserById(id: string): Promise<IUserModel> {
     return (await this.userRepository.find({ where: { id } }))[0];
   }
 
-  async updateUser(id: number, userData: Partial<UpdateUserDto>) {
+  async updateUser(id: string, userData: Partial<UpdateUserDto>) {
     await this.userRepository.update({ id }, userData);
   }
 
-  async deleteUser(id: number) {
+  async deleteUser(id: string) {
     await this.userRepository.delete({ id });
   }
 }

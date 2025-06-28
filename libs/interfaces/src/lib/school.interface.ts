@@ -1,4 +1,4 @@
 export interface ISchoolModel {
-  id: number;
+  id: string;
   name: string;
 }
