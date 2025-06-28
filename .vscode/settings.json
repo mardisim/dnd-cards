@@ -15,5 +15,6 @@
         "plaintext": false,
         "markdown": false,
         "scminput": false
-    }
+    },
+    "nxConsole.generateAiAgentRules": true
 }
