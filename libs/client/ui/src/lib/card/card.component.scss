@@ -64,57 +64,57 @@
 
 :host(.class-druid) {
   .card-container {
-    @include dndClassBackground('druid', 1, rgb(18, 148, 89), rgb(9, 104, 61));
+    @include dndClassBackground('druid', 5, rgb(18, 148, 89), rgb(9, 104, 61));
   }
 }
 
 :host(.class-fighter) {
   .card-container {
-    @include dndClassBackground('fighter', 2, rgb(255, 0, 0), rgb(138, 14, 14));
+    @include dndClassBackground('fighter', 6, rgb(255, 0, 0), rgb(138, 14, 14));
     --background-color-radial-class: #ffcc00 0, #d9ad00 100%;
   }
 }
 
 :host(.class-monk) {
   .card-container {
-    @include dndClassBackground('monk', 3, rgb(255, 127, 244), rgb(196, 77, 186));
+    @include dndClassBackground('monk', 7, rgb(255, 127, 244), rgb(196, 77, 186));
   }
 }
 
 :host(.class-paladin) {
   .card-container {
-    @include dndClassBackground('paladin', 4, rgb(0, 65, 129), rgb(9, 55, 101));
+    @include dndClassBackground('paladin', 8, rgb(0, 65, 129), rgb(9, 55, 101));
     --background-color-radial-class: var(--background-color-radial-silver);
   }
 }
 
 :host(.class-ranger) {
   .card-container {
-    @include dndClassBackground('ranger', 1, rgb(0, 80, 13), rgb(4, 51, 12));
+    @include dndClassBackground('ranger', 9, rgb(0, 80, 13), rgb(4, 51, 12));
   }
 }
 
 :host(.class-rogue) {
   .card-container {
-    @include dndClassBackground('rogue', 2, rgb(0, 0, 0), rgb(51, 52, 60));
+    @include dndClassBackground('rogue', 10, rgb(0, 0, 0), rgb(51, 52, 60));
   }
 }
 
 :host(.class-sorcerer) {
   .card-container {
-    @include dndClassBackground('sorcerer', 3, rgb(56, 6, 6), rgb(51, 52, 60));
+    @include dndClassBackground('sorcerer', 11, rgb(56, 6, 6), rgb(51, 52, 60));
   }
 }
 
 :host(.class-warlock) {
   .card-container {
-    @include dndClassBackground('warlock', 4, rgb(103, 2, 76), rgb(66, 5, 50));
+    @include dndClassBackground('warlock', 12, rgb(103, 2, 76), rgb(66, 5, 50));
   }
 }
 
 :host(.class-wizard) {
   .card-container {
-    @include dndClassBackground('wizard', 2, rgb(5, 57, 180), rgb(13, 44, 114));
+    @include dndClassBackground('wizard', 13, rgb(5, 57, 180), rgb(13, 44, 114));
   }
 }
 

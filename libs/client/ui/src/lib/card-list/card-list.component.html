@@ -1,0 +1,5 @@
+<div class="spell-card-container">
+  @for (spell of spells(); track spell.id) {
+    <ui-spell-card [spell]="spell" [dndClass]="dndClass()!"></ui-spell-card>
+  }
+</div>
