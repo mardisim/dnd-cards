@@ -1,8 +1,8 @@
 import { ISpellModel } from '@interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsNotEmpty, IsNumberString, IsString } from 'class-validator';
-import { DndClass } from '../entities/dndclass.entity.old';
-import { School } from '../entities/school.entity.old';
+import { DndClass } from '../entities/dndclass.entity';
+import { School } from '../entities/school.entity';
 
 export class SpellDto implements ISpellModel {
   @ApiProperty()

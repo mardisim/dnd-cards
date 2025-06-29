@@ -5,7 +5,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 @Entity('users')
 export class User implements IUserModel {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id!: string;
 
   @Column({ length: 100 })
   username!: string;

@@ -1,10 +1,10 @@
-import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { CreateUserDto, LoginUserDto } from '@dnd-cards/server-db';
 import { UserService } from '@dnd-cards/server-user';
 import { ICreateUser, IJWTPayloadUser } from '@interfaces';
+import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 import * as argon2 from 'argon2';
-import { CreateUserDto, LoginUserDto } from '@dnd-cards/server-db';
 
 @Injectable()
 export class AuthService {
@@ -87,6 +87,7 @@ export class AuthService {
     if (!user) {
       throw new BadRequestException('User does not exist');
     }
+    console.log(user.password, loginUserDto.password);
     const passwordMatches = await argon2.verify(user.password, loginUserDto.password);
     if (!passwordMatches) {
       throw new BadRequestException('Password is incorrect');

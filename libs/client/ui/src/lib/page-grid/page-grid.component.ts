@@ -1,6 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'ui-page-grid',
@@ -14,12 +13,9 @@ import { DOCUMENT } from '@angular/common';
   },
 })
 export class UIPageGridComponent {
-  private document = inject(DOCUMENT);
   sidebarOpen = signal<boolean>(false);
 
-  toggleMenu(event: Event, isOpen?: boolean) {
-    event.preventDefault();
-    event.stopPropagation();
+  toggleMenu(isOpen?: boolean) {
     this.sidebarOpen.set(isOpen !== undefined ? isOpen : !this.sidebarOpen());
   }
 }

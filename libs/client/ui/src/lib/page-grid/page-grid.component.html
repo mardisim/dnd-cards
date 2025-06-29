@@ -3,7 +3,7 @@
 <header class="navbar bg-body-tertiary">
   <nav class="container-fluid">
     <div class="navbar-brand">
-      <button id="btn-sidebar-toggle" class="btn btn-outline me-2" title="open menu" (click)="toggleMenu($event)">
+      <button id="btn-sidebar-toggle" class="btn btn-outline me-2" title="open menu" (click)="toggleMenu()">
         <i class="bi bi-list"></i>
       </button>
       <a>D&amp;D Cards</a>
@@ -14,7 +14,7 @@
     </form>
   </nav>
 </header>
-<main class="d-flex position-relative overflow-hidden" (click)="toggleMenu($event, false)">
+<main class="d-flex position-relative overflow-hidden" (click)="toggleMenu(false)">
   <aside>
     <nav>
       <ul class="list-group list-group-flush nav">

@@ -1,12 +1,12 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { School } from './school.entity';
 import { ISpellModel } from '@interfaces';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { DndClass } from './dndclass.entity';
+import { School } from './school.entity';
 
 @Entity('spells')
 export class Spell implements ISpellModel {
   @PrimaryGeneratedColumn()
-  id!: number;
+  id!: string;
   @Column({ length: 100 })
   name!: string;
   @Column()

@@ -4,8 +4,8 @@ import { Spell } from './spell.entity';
 
 @Entity('classes')
 export class DndClass implements IDndClassModel {
-  @PrimaryGeneratedColumn({ type: 'integer' })
-  id!: number;
+  @PrimaryGeneratedColumn()
+  id!: string;
 
   @Column({ length: 100 })
   name!: string;

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <label for="class-select" class="form-label">Choose your Class</label>
+      <select id="class-select" class="form-select" (change)="updateDnDClassList($event)">
+        @for (dndClass of dndClasses(); track dndClass.id) {
+          <option [value]="dndClass.id">{{ dndClass.name }}</option>
+        }
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ui-card-list-component [dndClass]="dndClass" [spells]="spells()"></ui-card-list-component>
+    </div>
+  </div>
+</div>

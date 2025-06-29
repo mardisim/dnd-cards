@@ -1,10 +1,10 @@
 import { inject } from '@angular/core';
 import { DnDClassState } from '@interfaces';
-import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { tapResponse } from '@ngrx/operators';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { distinctUntilChanged, pipe, switchMap, tap } from 'rxjs';
 import { DnDClassService } from './dnd-class.service';
+import { distinctUntilChanged, pipe, switchMap, tap } from 'rxjs';
 
 const initialState: DnDClassState = {
   dndClasses: [],
@@ -28,6 +28,22 @@ export const DnDClassStore = signalStore(
               error: err => {
                 patchState(store, { isLoading: false });
                 console.error(err);
+              },
+            }),
+          );
+        }),
+      ),
+    ),
+    loadDnDClass: rxMethod<string>(
+      pipe(
+        distinctUntilChanged(),
+        tap(() => patchState(store, { isLoading: true })),
+        switchMap((dndClassId: string) => {
+          return dndClassService.getDnDClass(dndClassId).pipe(
+            tapResponse({
+              next: dndClass => patchState(store, { spells: dndClass.spells, isLoading: false }),
+              error: () => {
+                patchState(store, { isLoading: false });
               },
             }),
           );
