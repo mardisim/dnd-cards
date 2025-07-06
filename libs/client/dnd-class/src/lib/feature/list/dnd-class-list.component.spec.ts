@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FeatureDnDClassLisComponent } from './dnd-class-list.component';
+import { FeatureDnDClassListComponent } from './dnd-class-list.component';
 
 describe('DndClassComponent', () => {
-  let component: FeatureDnDClassLisComponent;
-  let fixture: ComponentFixture<FeatureDnDClassLisComponent>;
+  let component: FeatureDnDClassListComponent;
+  let fixture: ComponentFixture<FeatureDnDClassListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FeatureDnDClassLisComponent],
+      imports: [FeatureDnDClassListComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FeatureDnDClassLisComponent);
+    fixture = TestBed.createComponent(FeatureDnDClassListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

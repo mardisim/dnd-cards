@@ -11,7 +11,7 @@ import { DnDClassStore } from '../../data-access/dnd-class.store';
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeatureDnDClassLisComponent {
+export class FeatureDnDClassListComponent {
   dndClassStore = inject(DnDClassStore);
   dndClasses = this.dndClassStore.dndClasses;
   spells = this.dndClassStore.spells;

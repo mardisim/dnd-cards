@@ -1,5 +1,5 @@
-import { Component, computed, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, computed, inject, input } from '@angular/core';
 import { SafeHtmlPipe } from '@dnd-cards/client-utils';
 import { ISpellModel } from '@interfaces';
 import { UICardComponent } from '../card/card.component';
@@ -16,6 +16,8 @@ export class UISpellCardComponent {
   private safeHtml = inject(SafeHtmlPipe);
 
   spell = input.required<ISpellModel>();
+  dndClass = input<string>('wizard');
+
   description = computed(() => {
     return this.safeHtml.transform(this.spell()?.description as string);
   });
@@ -24,9 +26,5 @@ export class UISpellCardComponent {
   });
   school = computed(() => {
     return this.spell().school.name;
-  });
-  dndClass = computed(() => {
-    const dndClasses = this.spell().dndClasses;
-    return dndClasses.length > 0 ? dndClasses[0].name : 'wizard';
   });
 }

@@ -1,8 +1,8 @@
-import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
-import { SpellService } from './spell.service';
 import { AccessTokenGuard } from '@dnd-cards/server-shared';
 import { ISpellModel } from '@interfaces';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiParam, ApiQuery } from '@nestjs/swagger';
+import { SpellService } from './spell.service';
 
 type RangeQuery = {
   range: string;

@@ -1,50 +1,38 @@
-<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <header class="navbar bg-body-tertiary">
   <nav class="container-fluid">
     <div class="navbar-brand">
-      <button id="btn-sidebar-toggle" class="btn btn-outline me-2" title="open menu" (click)="toggleMenu()">
+      <button
+        id="btn-sidebar-toggle"
+        class="btn btn-outline me-2"
+        title="open menu"
+        (click)="$event.stopPropagation(); toggleMenu()"
+      >
         <i class="bi bi-list"></i>
       </button>
       <a>D&amp;D Cards</a>
     </div>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+    <form class="d-flex gap-2" role="search">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </nav>
 </header>
-<main class="d-flex position-relative overflow-hidden" (click)="toggleMenu(false)">
+<main>
   <aside>
     <nav>
-      <ul class="list-group list-group-flush nav">
+      <ul class="list-group">
         <li class="list-group-item">
-          <a
-            [routerLink]="'spells'"
-            routerLinkActive="active"
-            class="d-flex align-items-center gap-3"
-            tooltip="Home"
-            placement="right"
+          <a [routerLink]="'spells'" routerLinkActive="active" class="menu-link"
             ><i class="bi bi-house"></i> <span class="link-caption">Home</span></a
           >
         </li>
         <li class="list-group-item">
-          <a
-            [routerLink]="['spell']"
-            routerLinkActive="active"
-            class="d-flex align-items-center gap-3"
-            tooltip="Spells"
-            placement="right"
+          <a [routerLink]="['spell']" routerLinkActive="active" class="menu-link"
             ><i class="bi bi-magic"></i> <span class="link-caption">Spells</span></a
           >
         </li>
         <li class="list-group-item">
-          <a
-            [routerLink]="['dnd-classes']"
-            routerLinkActive="active"
-            class="d-flex align-items-center gap-3"
-            tooltip="Classes"
-            placement="right"
+          <a [routerLink]="['dnd-classes']" routerLinkActive="active" class="menu-link"
             ><i class="bi bi-person-circle"></i> <span class="link-caption">Classes</span></a
           >
         </li>

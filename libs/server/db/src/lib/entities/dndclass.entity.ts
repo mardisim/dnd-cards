@@ -1,10 +1,10 @@
-import { IDndClassModel } from '@interfaces';
+import { IDndClassModel, ISpellModel } from '@interfaces';
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Spell } from './spell.entity';
 
 @Entity('classes')
 export class DndClass implements IDndClassModel {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'integer' })
   id!: string;
 
   @Column({ length: 100 })
@@ -22,5 +22,5 @@ export class DndClass implements IDndClassModel {
       referencedColumnName: 'id',
     },
   })
-  spells!: Spell[];
+  spells!: ISpellModel[];
 }
