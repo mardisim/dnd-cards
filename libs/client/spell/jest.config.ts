@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   displayName: 'client-spell',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

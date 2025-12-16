@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   displayName: 'dnd-class',
   preset: '../../../jest.preset.js',
   testEnvironment: 'node',
