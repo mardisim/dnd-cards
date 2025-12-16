@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { AuthenticationService } from '@dnd-cards/client-auth';
-import { CommonModule } from '@angular/common';
+
 import { ILoginUser } from '@interfaces';
 import { ToastService, ToastType } from '@dnd-cards/client-ui';
 
@@ -13,7 +13,7 @@ type ILoginUserForm = {
 };
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule],
   templateUrl: 'login.component.html',
   styleUrl: 'login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

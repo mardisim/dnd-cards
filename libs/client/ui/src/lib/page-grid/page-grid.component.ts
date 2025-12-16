@@ -1,6 +1,6 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, DOCUMENT } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'ui-page-grid',

@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ISpellModel } from '@interfaces';
 import { UISpellCardComponent } from '../spell-card/spell-card.component';
 
 @Component({
   selector: 'ui-card-list-component',
-  imports: [CommonModule, UISpellCardComponent],
+  imports: [UISpellCardComponent],
   templateUrl: './card-list.component.html',
   styleUrl: './card-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

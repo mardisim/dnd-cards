@@ -23,12 +23,14 @@
     </div>
     <div class="spell-description">
       <span [innerHTML]="description()"></span>
-      <strong *ngIf="spell().material">Materials: </strong><br />
-      <strong>{{ spell().material }}</strong>
-    </div>
-    <footer>
-      <div class="spell-class">Class</div>
-      <div class="spell-school">{{ level() }} {{ school() }}</div>
-    </footer>
-  </article>
-</ui-card>
+      @if (spell().material) {
+        <strong>Materials: </strong>
+        }<br />
+        <strong>{{ spell().material }}</strong>
+      </div>
+      <footer>
+        <div class="spell-class">Class</div>
+        <div class="spell-school">{{ level() }} {{ school() }}</div>
+      </footer>
+    </article>
+  </ui-card>
