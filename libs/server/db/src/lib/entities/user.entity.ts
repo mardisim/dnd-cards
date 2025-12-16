@@ -1,42 +1,47 @@
-import { IUserModel } from '@interfaces';
-import { IsEmail, IsString } from 'class-validator';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, Entity, Index, OneToMany } from 'typeorm';
+import { Character } from './character.entity';
 
-@Entity('users')
-export class User implements IUserModel {
-  @PrimaryGeneratedColumn()
-  id!: number;
+@Index('user_id', ['id'], { unique: true })
+@Entity('users', { schema: 'public' })
+export class User {
+  @Column('uuid', {
+    primary: true,
+    name: 'id',
+    default: () => 'gen_random_uuid()',
+  })
+  id!: string;
 
-  @Column({ length: 100 })
+  @Column('character varying', { name: 'username' })
   username!: string;
 
-  @Column({ length: 100 })
+  @Column('character varying', { name: 'password' })
   password!: string;
 
-  @Column({ length: 100, nullable: true, name: 'first_name' })
-  firstName!: string;
+  @Column('character varying', { name: 'first_name', nullable: true })
+  firstName!: string | null;
 
-  @Column({ length: 100, nullable: true, name: 'last_name' })
-  lastName!: string;
+  @Column('character varying', { name: 'last_name', nullable: true })
+  lastName!: string | null;
 
-  @Column({ length: 250, unique: true })
-  @IsEmail()
+  @Column('character varying', { name: 'email' })
   email!: string;
 
-  @Column({ length: 250, name: 'refresh_token' })
-  @IsString()
+  @Column('date', { name: 'updated_at', nullable: true })
+  updatedAt!: string | null;
+
+  @Column('date', {
+    name: 'created_at',
+    nullable: true,
+    default: () => 'now()',
+  })
+  createdAt!: string | null;
+
+  @Column('character varying', { name: 'refresh_token', nullable: true })
   refreshToken!: string | null;
 
-  @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt!: Date;
+  @Column('character varying', { name: 'role', nullable: true })
+  role!: string | null;
 
-  @CreateDateColumn({ name: 'created_at' })
-  createdAt!: Date;
-
-  @Column({ enum: ['Admin', 'User', 'Guest'], default: 'Guest' })
-  role!: string;
-
-  constructor(partialUser: Partial<User>) {
-    Object.assign(this, partialUser);
-  }
+  @OneToMany(() => Character, characters => characters.user)
+  characters!: Character[];
 }

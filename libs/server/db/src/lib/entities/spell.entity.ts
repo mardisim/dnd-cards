@@ -1,56 +1,71 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
+import { Character } from './character.entity';
+import { DndClassSpell } from './dndclassspells.entity';
 import { School } from './school.entity';
-import { ISpellModel } from '@interfaces';
-import { DndClass } from './dndclass.entity';
+import { SpellBook } from './spellbook.entity';
 
-@Entity('spells')
-export class Spell implements ISpellModel {
-  @PrimaryGeneratedColumn()
-  id!: number;
-  @Column({ length: 100 })
+@Index('spells_pkey', ['id'], { unique: true })
+@Entity('spells', { schema: 'public' })
+export class Spell {
+  @Column('uuid', {
+    primary: true,
+    name: 'id',
+    default: () => 'gen_random_uuid()',
+  })
+  id!: string;
+
+  @Column('character', { name: 'name', length: 50 })
   name!: string;
-  @Column()
+
+  @Column('character varying', { name: 'description' })
   description!: string;
-  @Column()
-  ingredients!: string;
-  @Column()
-  range!: string;
-  @Column()
-  components!: string;
-  @Column()
-  material!: string;
-  @Column()
+
+  @Column('character varying', { name: 'ingredients', nullable: true })
+  ingredients!: string | null;
+
+  @Column('character', { name: 'range', nullable: true, length: 50 })
+  range!: string | null;
+
+  @Column('character', { name: 'components', nullable: true, length: 50 })
+  components!: string | null;
+
+  @Column('character', { name: 'material', nullable: true, length: 50 })
+  material!: string | null;
+
+  @Column('character', { name: 'action', length: 25 })
   action!: string;
-  @Column()
+
+  @Column('boolean', { name: 'ritual' })
   ritual!: boolean;
-  @Column()
+
+  @Column('character', { name: 'duration', length: 50 })
   duration!: string;
-  @Column()
+
+  @Column('boolean', { name: 'concentration' })
   concentration!: boolean;
-  @Column({ name: 'casting_time' })
-  castingTime!: string;
-  @Column()
+
+  @Column('character', { name: 'casting_time', nullable: true, length: 25 })
+  castingTime!: string | null;
+
+  @Column('character varying', { name: 'id_old', nullable: true })
+  idOld!: string | null;
+
+  @Column('integer', { name: 'level' })
   level!: number;
 
-  @OneToOne(() => School)
-  @JoinColumn({ name: 'school_id' })
-  school!: School;
+  @ManyToMany(() => Character, characters => characters.spells)
+  characters!: Character[];
 
-  @ManyToMany(() => DndClass)
-  @JoinTable({
-    name: 'class_spells',
-    joinColumn: {
-      name: 'spell_id',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'class_id',
-      referencedColumnName: 'id',
-    },
+  @OneToMany(() => DndClassSpell, dndClassSpells => dndClassSpells.spell)
+  dndClassSpells!: DndClassSpell[];
+
+  @OneToMany(() => SpellBook, spellBooks => spellBooks.spell)
+  spellBooks!: SpellBook[];
+
+  @ManyToOne(() => School, schools => schools.spells, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
   })
-  dndClasses!: DndClass[];
-
-  constructor(partialSpell: Partial<Spell>) {
-    Object.assign(this, partialSpell);
-  }
+  @JoinColumn([{ name: 'school_id', referencedColumnName: 'id' }])
+  school!: School;
 }

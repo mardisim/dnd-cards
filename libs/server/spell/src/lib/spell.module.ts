@@ -1,10 +1,10 @@
 import { Spell } from '@dnd-cards/server-db';
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { SpellService } from './spell.service';
-import { SpellController } from './spell.controller';
 import { JwtService } from '@nestjs/jwt';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { SpellMiddleware } from './middleware/spell.middleware';
+import { SpellController } from './spell.controller';
+import { SpellService } from './spell.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Spell])],

@@ -1,26 +1,28 @@
-import { IDndClassModel } from '@interfaces';
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, OneToMany } from 'typeorm';
+import { Archetype } from './archetype.entity';
+import { Character } from './character.entity';
+import { DndClassSpell } from './dndclassspells.entity';
 import { Spell } from './spell.entity';
 
-@Entity('classes')
-export class DndClass implements IDndClassModel {
-  @PrimaryGeneratedColumn({ type: 'integer' })
-  id!: number;
+@Index('class_id', ['id'], { unique: true })
+@Entity('dnd_classes', { schema: 'public' })
+export class DndClass {
+  @Column('uuid', {
+    primary: true,
+    name: 'id',
+    default: () => 'gen_random_uuid()',
+  })
+  id!: string;
 
-  @Column({ length: 100 })
+  @Column('character', { name: 'name', length: 25 })
   name!: string;
 
-  @ManyToMany(() => Spell)
-  @JoinTable({
-    name: 'class_spells',
-    joinColumn: {
-      name: 'class_id',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'spell_id',
-      referencedColumnName: 'id',
-    },
-  })
+  @OneToMany(() => Archetype, archetypes => archetypes.dndClass)
+  archetypes!: Archetype[];
+
+  @OneToMany(() => Character, characters => characters.dndClass)
+  characters!: Character[];
+
+  @OneToMany(() => DndClassSpell, dndClassSpells => dndClassSpells.spell)
   spells!: Spell[];
 }

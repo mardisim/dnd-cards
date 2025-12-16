@@ -1,9 +1,8 @@
-import { IDndClassModel } from '@interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { Spell } from '../entities/spell.entity.old';
+import { Spell } from '../entities/spell.entity';
 
-export class DndClassDto implements IDndClassModel {
+export class DndClassDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()

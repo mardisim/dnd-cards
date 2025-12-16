@@ -1,8 +1,8 @@
-import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
-import { SpellService } from './spell.service';
+import { Spell } from '@dnd-cards/server-db';
 import { AccessTokenGuard } from '@dnd-cards/server-shared';
-import { ISpellModel } from '@interfaces';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiParam, ApiQuery } from '@nestjs/swagger';
+import { SpellService } from './spell.service';
 
 type RangeQuery = {
   range: string;
@@ -15,7 +15,7 @@ export class SpellController {
 
   @UseGuards(AccessTokenGuard)
   @Get()
-  async getAllSpells(): Promise<ISpellModel[]> {
+  async getAllSpells(): Promise<Spell[]> {
     return await this.spellService.getAllSpells();
   }
 
@@ -34,7 +34,7 @@ export class SpellController {
     description: 'Spell id number',
     type: 'integer',
   })
-  async getSpells(@Param() id: string): Promise<ISpellModel | null> {
+  async getSpells(@Param() id: string): Promise<Spell | null> {
     return await this.spellService.getSpell(id);
   }
 }

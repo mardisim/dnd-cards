@@ -1,5 +1,5 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { IDndClassModel } from '@interfaces';
 import { Observable } from 'rxjs';
 
@@ -15,7 +15,7 @@ export class DnDClassService {
     return this.http.get<IDndClassModel[]>(`${AUTH_API_URL}`);
   }
 
-  getDnDClass(id: number): Observable<IDndClassModel> {
+  getDnDClass(id: string): Observable<IDndClassModel> {
     return this.http.get<IDndClassModel>(`${AUTH_API_URL}/${id}`);
   }
 }

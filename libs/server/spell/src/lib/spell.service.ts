@@ -14,7 +14,7 @@ export class SpellService {
     return await this.spellRepository.find({
       relations: {
         school: true,
-        dndClasses: true,
+        dndClassSpells: true,
       },
     });
   }
@@ -24,7 +24,7 @@ export class SpellService {
       where: { id },
       relations: {
         school: true,
-        dndClasses: true,
+        dndClassSpells: true,
       },
     });
   }

@@ -1,6 +1,6 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+import { provideRouter } from '@angular/router';
 import { UIPageGridComponent } from './page-grid.component';
 
 describe('TopNavComponent', () => {
@@ -10,6 +10,7 @@ describe('TopNavComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule],
+      providers: [provideRouter([])],
     }).compileComponents();
   }));
 

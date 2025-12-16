@@ -2,8 +2,8 @@ export interface IUserModel {
   id: string;
   username: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  firstName: string | null;
+  lastName: string | null;
   email: string;
   refreshToken: string | null;
 }

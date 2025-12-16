@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { UICardListComponent } from '@dnd-cards/client-ui';
 import { SpellStore } from './spell.store';
 

@@ -12,5 +12,5 @@ import { UISpellCardComponent } from '../spell-card/spell-card.component';
 })
 export class UICardListComponent {
   spells = input.required<ISpellModel[]>();
-  dndClass = input<string>();
+  dndClass = input<string>('wizard');
 }
