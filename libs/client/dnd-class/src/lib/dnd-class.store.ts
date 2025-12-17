@@ -4,7 +4,7 @@ import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { distinctUntilChanged, pipe, switchMap, tap } from 'rxjs';
-import { DnDClassService } from './dnd-class.service';
+import { DnDClassesService } from './dnd-class.service';
 
 const initialState: DnDClassState = {
   dndClasses: [],
@@ -16,13 +16,13 @@ const initialState: DnDClassState = {
 export const DnDClassStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  withMethods((store, dndClassService = inject(DnDClassService)) => ({
+  withMethods((store, dndClassesService = inject(DnDClassesService)) => ({
     loadAllDnDClasses: rxMethod<void>(
       pipe(
         distinctUntilChanged(),
         tap(() => patchState(store, { isLoading: true })),
         switchMap(() => {
-          return dndClassService.getAllDnDClasses().pipe(
+          return dndClassesService.getAllDnDClasses().pipe(
             tapResponse({
               next: dndClasses => patchState(store, { dndClasses, isLoading: false }),
               error: err => {
@@ -38,10 +38,10 @@ export const DnDClassStore = signalStore(
       pipe(
         distinctUntilChanged(),
         tap(() => patchState(store, { isLoading: true })),
-        switchMap((dndClassId: string) => {
-          return dndClassService.getDnDClass(dndClassId).pipe(
+        switchMap((dndClassesId: string) => {
+          return dndClassesService.getDnDClass(dndClassesId).pipe(
             tapResponse({
-              next: dndClass => patchState(store, { spells: dndClass.spells, isLoading: false }),
+              next: dndClasses => patchState(store, { spells: dndClasses.spells, isLoading: false }),
               error: () => {
                 patchState(store, { isLoading: false });
               },

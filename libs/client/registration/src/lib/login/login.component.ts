@@ -5,14 +5,13 @@ import { take } from 'rxjs/operators';
 
 import { AuthenticationService } from '@dnd-cards/client-auth';
 
-import { ILoginUser } from '@interfaces';
 import { ToastService, ToastType } from '@dnd-cards/client-ui';
+import { ILoginUser } from '@interfaces';
 
 type ILoginUserForm = {
   [K in keyof ILoginUser]: FormControl<ILoginUser[K]>;
 };
 @Component({
-  standalone: true,
   imports: [RouterModule, ReactiveFormsModule],
   templateUrl: 'login.component.html',
   styleUrl: 'login.component.scss',

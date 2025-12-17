@@ -1,4 +1,4 @@
-import { Spell } from '@dnd-cards/server-db';
+import { Spells } from '@dnd-cards/server-db';
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -7,7 +7,7 @@ import { SpellController } from './spell.controller';
 import { SpellService } from './spell.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Spell])],
+  imports: [TypeOrmModule.forFeature([Spells])],
   controllers: [SpellController],
   providers: [SpellService, JwtService],
 })

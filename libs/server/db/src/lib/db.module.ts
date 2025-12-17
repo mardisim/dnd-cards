@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Archetype } from './entities/archetype.entity';
-import { Book } from './entities/book.entity';
-import { Character } from './entities/character.entity';
-import { DndClass } from './entities/dndclass.entity';
-import { DndClassSpell } from './entities/dndclassspells.entity';
-import { School } from './entities/school.entity';
-import { Spell } from './entities/spell.entity';
-import { SpellBook } from './entities/spellbook.entity';
-import { User } from './entities/user.entity';
+import { Archetypes } from './entities/archetypes.entity';
+import { Books } from './entities/books.entity';
+import { Characters } from './entities/character.entity';
+import { DndClasses } from './entities/dndclasses.entity';
+import { DndClassesSpells } from './entities/dndclassesspells.entity';
+import { Schools } from './entities/schools.entity';
+import { Spells } from './entities/spells.entity';
+import { SpellsBooks } from './entities/spellsbooks.entity';
+import { Users } from './entities/users.entity';
 
 @Module({
   imports: [
@@ -24,7 +24,7 @@ import { User } from './entities/user.entity';
         username: configService.get('POSTGRES_DB_USERNAME', 'root'),
         password: configService.get('POSTGRES_DB_PASSWORD', 'root'),
         database: configService.get('POSTGRES_NAME', 'dnd_cards'),
-        entities: [Archetype, Book, Character, DndClass, DndClassSpell, School, SpellBook, Spell, User],
+        entities: [Archetypes, Books, Characters, DndClasses, DndClassesSpells, Schools, SpellsBooks, Spells, Users],
       }),
     }),
   ],

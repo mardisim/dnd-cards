@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsNotEmpty, IsNumberString, IsString } from 'class-validator';
-import { DndClass } from '../entities/dndclass.entity';
-import { School } from '../entities/school.entity';
+import { DndClasses } from '../entities/dndclasses.entity';
+import { Schools } from '../entities/schools.entity';
 
 export class SpellDto {
   @ApiProperty()
@@ -58,8 +58,8 @@ export class SpellDto {
   level!: number;
   @ApiProperty()
   @IsNotEmpty()
-  school!: School;
+  school!: Schools;
   @ApiProperty()
   @IsNotEmpty()
-  dndClasses!: DndClass[];
+  dndClasses!: DndClasses[];
 }

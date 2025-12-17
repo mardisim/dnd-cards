@@ -1,8 +1,8 @@
-import { DndClass } from '@dnd-cards/server-db';
+import { DndClasses } from '@dnd-cards/server-db';
 import { AccessTokenGuard } from '@dnd-cards/server-shared';
 import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiParam, ApiQuery } from '@nestjs/swagger';
-import { DnDClassService } from './dnd-class.service';
+import { DnDClassesService } from './dnd-classes.service';
 
 type RangeQuery = {
   range: string;
@@ -10,20 +10,20 @@ type RangeQuery = {
 };
 
 @Controller('/dnd-class')
-export class DnDClassController {
-  constructor(private readonly dndClassService: DnDClassService) {}
+export class DnDClassesController {
+  constructor(private readonly dndClassesService: DnDClassesService) {}
 
   @UseGuards(AccessTokenGuard)
   @Get()
-  async getAllDnDClasses(): Promise<DndClass[]> {
-    return await this.dndClassService.getAllDnDClasses();
+  async getAllDnDClasses(): Promise<DndClasses[]> {
+    return await this.dndClassesService.getAllDnDClasses();
   }
 
   @Get('paged')
   @ApiQuery({ name: 'range', required: false })
   @ApiQuery({ name: 'offset', required: false })
   get(@Query() { range, offset }: RangeQuery) {
-    return this.dndClassService.findRange(parseInt(range), parseInt(offset));
+    return this.dndClassesService.findRange(parseInt(range), parseInt(offset));
   }
 
   @UseGuards(AccessTokenGuard)
@@ -31,9 +31,9 @@ export class DnDClassController {
   @ApiParam({
     name: 'id',
     required: true,
-    description: 'DnD Class id',
+    description: 'DnD Classes id',
   })
-  async getSpells(@Param('id') id: string): Promise<DndClass | null> {
-    return await this.dndClassService.getDnDClass(id);
+  async getSpells(@Param('id') id: string): Promise<DndClasses | null> {
+    return await this.dndClassesService.getDnDClass(id);
   }
 }

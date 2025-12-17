@@ -5,9 +5,9 @@ import { first } from 'rxjs/operators';
 
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '@dnd-cards/client-auth';
-import { ICreateUser } from '@interfaces';
-import { CustomValidators } from '@dnd-cards/client-utils';
 import { ToastService, ToastType } from '@dnd-cards/client-ui';
+import { CustomValidators } from '@dnd-cards/client-utils';
+import { ICreateUser } from '@interfaces';
 
 type ICreateUserForm = {
   [K in keyof ICreateUser]: FormControl<ICreateUser[K]>;
@@ -15,7 +15,6 @@ type ICreateUserForm = {
   passwordConfirm?: FormControl<string | null>;
 };
 @Component({
-  standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: 'register.component.html',
   styleUrl: 'register.component.scss',

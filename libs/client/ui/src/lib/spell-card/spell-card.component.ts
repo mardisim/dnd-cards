@@ -6,7 +6,6 @@ import { UICardComponent } from '../card/card.component';
 
 @Component({
   selector: 'ui-spell-card',
-  standalone: true,
   imports: [CommonModule, UICardComponent],
   providers: [SafeHtmlPipe],
   templateUrl: './spell-card.component.html',
@@ -24,7 +23,7 @@ export class UISpellCardComponent {
   level = computed(() => {
     return Number(this.spell().level) > 0 ? this.spell().level + '. Level' : 'Cantrip';
   });
-  school = computed(() => {
-    return this.spell().school.name;
-  });
+  // school = computed(() => {
+  //   return this.spell().school.name;
+  // });
 }

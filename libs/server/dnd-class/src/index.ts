@@ -1,2 +1,2 @@
-export * from './lib/dnd-class.module';
-export * from './lib/dnd-class.service';
+export * from './lib/dnd-classes.module';
+export * from './lib/dnd-classes.service';

@@ -1,4 +1,4 @@
-import { CreateUserDto, UpdateUserDto, User } from '@dnd-cards/server-db';
+import { CreateUserDto, UpdateUserDto, Users } from '@dnd-cards/server-db';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -6,19 +6,19 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    @InjectRepository(Users)
+    private readonly userRepository: Repository<Users>,
   ) {}
 
-  async createUser(createUserDto: CreateUserDto): Promise<User> {
+  async createUser(createUserDto: CreateUserDto): Promise<Users> {
     return this.userRepository.save(createUserDto);
   }
 
-  async getUserByUsername(username: string): Promise<User> {
+  async getUserByUsername(username: string): Promise<Users> {
     return (await this.userRepository.find({ where: { username } }))[0];
   }
 
-  async getUserById(id: string): Promise<User> {
+  async getUserById(id: string): Promise<Users> {
     return (await this.userRepository.find({ where: { id } }))[0];
   }
 

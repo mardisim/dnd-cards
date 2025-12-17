@@ -1,11 +1,10 @@
-
 import { Component, inject } from '@angular/core';
 import { UICardListComponent } from '@dnd-cards/client-ui';
 import { SpellStore } from './spell.store';
 
 @Component({
   selector: 'lib-spell',
-  standalone: true,
+
   imports: [UICardListComponent],
   templateUrl: './spell.component.html',
   styleUrl: './spell.component.scss',

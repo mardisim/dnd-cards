@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ISpellModel } from '@interfaces';
 import { UISpellCardComponent } from '../spell-card/spell-card.component';
@@ -9,6 +8,9 @@ import { UISpellCardComponent } from '../spell-card/spell-card.component';
   templateUrl: './card-list.component.html',
   styleUrl: './card-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class]': '"class-" + dndClass()',
+  },
 })
 export class UICardListComponent {
   spells = input.required<ISpellModel[]>();

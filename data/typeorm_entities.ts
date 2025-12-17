@@ -11,9 +11,9 @@ export class Archetypes {
   @Column()
   level: number;
   @Column()
-  dnd_class_id: string;
+  dndClass_id: string;
   @Column()
-  book_id: string;
+  bookId: string;
 }
 
 @Entity()

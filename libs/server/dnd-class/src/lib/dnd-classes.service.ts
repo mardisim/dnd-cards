@@ -1,26 +1,24 @@
-import { DndClass } from '@dnd-cards/server-db';
+import { DndClasses } from '@dnd-cards/server-db';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class DnDClassService {
+export class DnDClassesService {
   constructor(
-    @InjectRepository(DndClass)
-    private readonly dndClassRepository: Repository<DndClass>,
+    @InjectRepository(DndClasses)
+    private readonly dndClassRepository: Repository<DndClasses>,
   ) {}
 
-  async getAllDnDClasses(): Promise<DndClass[]> {
+  async getAllDnDClasses(): Promise<DndClasses[]> {
     return await this.dndClassRepository.find();
   }
 
-  async getDnDClass(id: string): Promise<DndClass | null> {
+  async getDnDClass(id: string): Promise<DndClasses | null> {
     return await this.dndClassRepository.findOne({
       where: { id },
       relations: {
-        spells: {
-          school: true,
-        },
+        spells: true,
       },
     });
   }

@@ -1,9 +1,9 @@
 <ui-card [dndClass]="dndClass()">
-  <article class="spell-container shadow d-flex flex-column">
+  <article class="spell-container shadow d-flex flex-column gap-3 p-3">
     <header class="text-truncate" [ngClass]="{ 'spell-concentration': spell().concentration }">
       <h3 class="text-truncate">{{ spell().name }}</h3>
     </header>
-    <div class="spell-details-list">
+    <div class="spell-details-list gap-3">
       <div class="spell-detail" id="spell-casting-time">
         <h5>Casting Time</h5>
         <p>{{ spell().castingTime }}</p>
@@ -25,12 +25,13 @@
       <span [innerHTML]="description()"></span>
       @if (spell().material) {
         <strong>Materials: </strong>
-        }<br />
-        <strong>{{ spell().material }}</strong>
-      </div>
-      <footer>
-        <div class="spell-class">Class</div>
-        <div class="spell-school">{{ level() }} {{ school() }}</div>
-      </footer>
-    </article>
-  </ui-card>
+      }
+      <br />
+      <strong>{{ spell().material }}</strong>
+    </div>
+    <footer>
+      <div class="spell-class">Class</div>
+      <div class="spell-school">{{ level() }}</div>
+    </footer>
+  </article>
+</ui-card>

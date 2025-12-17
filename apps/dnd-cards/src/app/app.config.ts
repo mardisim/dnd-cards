@@ -1,18 +1,16 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { JwtInterceptor } from '@dnd-cards/client-auth';
+import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
-    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideZonelessChangeDetection(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    provideRouter(appRoutes),
-    provideAnimationsAsync(),
+    provideRouter(appRoutes, withComponentInputBinding()),
   ],
 };

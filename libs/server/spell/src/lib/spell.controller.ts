@@ -1,4 +1,4 @@
-import { Spell } from '@dnd-cards/server-db';
+import { Spells } from '@dnd-cards/server-db';
 import { AccessTokenGuard } from '@dnd-cards/server-shared';
 import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiParam, ApiQuery } from '@nestjs/swagger';
@@ -15,7 +15,7 @@ export class SpellController {
 
   @UseGuards(AccessTokenGuard)
   @Get()
-  async getAllSpells(): Promise<Spell[]> {
+  async getAllSpells(): Promise<Spells[]> {
     return await this.spellService.getAllSpells();
   }
 
@@ -34,7 +34,7 @@ export class SpellController {
     description: 'Spell id number',
     type: 'integer',
   })
-  async getSpells(@Param() id: string): Promise<Spell | null> {
+  async getSpells(@Param() id: string): Promise<Spells | null> {
     return await this.spellService.getSpell(id);
   }
 }

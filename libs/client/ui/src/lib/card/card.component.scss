@@ -139,7 +139,7 @@
   --tiltY: 0;
   --angle: 7deg;
 
-  --flipped: 0;
+  --flipped: 1;
 
   position: relative;
 
@@ -148,7 +148,7 @@
 
 .card-container:active {
   .content {
-    --flipped: 1;
+    --flipped: 0;
   }
 }
 

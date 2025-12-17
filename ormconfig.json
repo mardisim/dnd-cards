@@ -7,11 +7,12 @@
     "username": "root",
     "password": "root",
     "database": "dnd_cards",
-    "synchronize": false,
-    "entities": ["apps/api/**/*.entity.js"],
-    "migrations": ["apps/api/src/migrations/*"],
+    "synchronize": true,
+    "entities": ["libs/server/db/src/lib/entities/**/*.entity.js"],
+    "migrations": ["libs/server/db/src/lib/migrations/*"],
     "cli": {
-      "migrationsDir": "apps/api/src/migrations"
-    }
+      "migrationsDir": "libs/server/db/src/lib/migrations"
+    },
+    "logging": ["query", "error"]
   }
 ]

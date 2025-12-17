@@ -2,17 +2,16 @@
   <div class="row">
     <label for="class-select">Choose your Class</label>
     <div class="col">
-      <select id="class-select" class="form-select" (change)="updateDnDClassList($event)">
+      <select id="class-select" class="form-select" (change)="updateDnDClassesList($event)">
         <option hidden [value]="null">Select your class...</option>
-        @for (dndClass of dndClasses(); track dndClass.id) {
-          <option [value]="dndClass.id">{{ dndClass.name }}</option>
+        @for (dndClasses of dndClasses(); track dndClasses.id) {
+          <option [value]="dndClasses.id">{{ dndClasses.name }}</option>
         }
       </select>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      {{ spells() | json }}
       <ui-card-list-component [dndClass]="dndClass" [spells]="spells()"></ui-card-list-component>
     </div>
   </div>

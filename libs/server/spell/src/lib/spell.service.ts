@@ -1,4 +1,4 @@
-import { Spell } from '@dnd-cards/server-db';
+import { Spells } from '@dnd-cards/server-db';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -6,25 +6,25 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class SpellService {
   constructor(
-    @InjectRepository(Spell)
-    private readonly spellRepository: Repository<Spell>,
+    @InjectRepository(Spells)
+    private readonly spellRepository: Repository<Spells>,
   ) {}
 
-  async getAllSpells(): Promise<Spell[]> {
+  async getAllSpells(): Promise<Spells[]> {
     return await this.spellRepository.find({
       relations: {
-        school: true,
-        dndClassSpells: true,
+        schools: true,
+        dndClassesSpells: true,
       },
     });
   }
 
-  async getSpell(id: string): Promise<Spell | null> {
+  async getSpell(id: string): Promise<Spells | null> {
     return await this.spellRepository.findOne({
       where: { id },
       relations: {
-        school: true,
-        dndClassSpells: true,
+        schools: true,
+        dndClassesSpells: true,
       },
     });
   }
