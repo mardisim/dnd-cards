@@ -1,57 +1,44 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect } from 'storybook/test';
 import { UISpellCardComponent } from './spell-card.component';
 
-const meta: Meta<UISpellCardComponent> = { component: UISpellCardComponent, title: 'SpellCardComponent' };
+const meta: Meta<UISpellCardComponent> = {
+  component: UISpellCardComponent,
+  title: 'UISpellCardComponent',
+};
 export default meta;
+
 type Story = StoryObj<UISpellCardComponent>;
 
 export const Primary: Story = {
   args: {
     spell: {
-      name: 'Acid Arrow',
-      level: 2,
+      id: 'aae7a1cb-84be-451b-a37c-3f524ec66fbd',
+      name: 'Aid',
       description:
-        'A shimmering green arrow streaks from your hand and speeds to cross between the tips. Make a ranged spell attack. On a hit, the target takes 4d4 acid damage immediately and 2d4 persistent acid damage at the end of its next turn. On a miss, the arrow flies straight and strikes the nearest creature within range, dealing 4d4 acid damage immediately and 2d4 persistent acid damage at the end of its next turn.',
-      index: 'acid-arrow',
-      url: '/api/spells/acid-arrow',
-      range: '90 feet',
+        "Your spell bolsters your allies with toughness and resolve. Choose up to three creatures within range. Each target's hit point maximum and current hit points increase by 5 for the duration.<br> <b>At Higher Levels</b>: When you cast this spell using a spell slot of 3rd level or higher, a target's hit points increase by an additional 5 for each slot level above 2nd.",
+      ingredients: 'a tiny strip of white cloth',
+      range: '30 feet',
+      components: 'VSM',
       material: '',
+      action: '1 action',
       ritual: false,
-      duration: 'Instantaneous',
+      duration: '8 hours',
       concentration: false,
-      casting_time: '1 action',
-      level_int: 2,
-      attack_type: 'ranged',
-
-      damage: {
-        damage_at_slot_level: {
-          '2': '4d4',
-          '3': '2d4',
-        },
-
-        damage_type: {
-          name: 'Acid',
-          url: '/api/damage-types/acid',
-        },
+      castingTime: '',
+      level: 2,
+      school: {
+        id: '9229f2b9-e42b-42e6-9b38-55aab1696d93',
+        name: 'Abjuration',
       },
-
-      classes: [
-        {
-          name: 'Sorcerer',
-          url: '/api/classes/sorcerer',
-        },
-        {
-          name: 'Wizard',
-          url: '/api/classes/wizard',
-        },
-      ],
-
-      subclasses: [
-        {
-          name: 'Eldritch Knight',
-          url: '/api/subclasses/eldritch-knight',
-        },
-      ],
+      dndClasses: [],
     },
+  },
+};
+
+export const Heading: Story = {
+  args: {},
+  play: async ({ canvas }) => {
+    await expect(canvas.getByText(/spell-card/gi)).toBeTruthy();
   },
 };

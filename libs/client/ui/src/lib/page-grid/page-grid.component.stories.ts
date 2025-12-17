@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { expect } from 'storybook/test';
 import { UIPageGridComponent } from './page-grid.component';
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
 
 const meta: Meta<UIPageGridComponent> = {
   component: UIPageGridComponent,
-  title: 'TopNavComponent',
+  title: 'UIPageGridComponent',
 };
 export default meta;
+
 type Story = StoryObj<UIPageGridComponent>;
 
 export const Primary: Story = {
@@ -16,8 +16,7 @@ export const Primary: Story = {
 
 export const Heading: Story = {
   args: {},
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(canvas.getByText(/top-nav works!/gi)).toBeTruthy();
+  play: async ({ canvas }) => {
+    await expect(canvas.getByText(/page-grid/gi)).toBeTruthy();
   },
 };

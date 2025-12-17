@@ -2,8 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true
+    "moduleResolution": "bundler"
   },
   "exclude": ["../**/*.spec.ts"],
   "include": [
@@ -13,8 +12,6 @@
     "../src/**/*.stories.tsx",
     "../src/**/*.stories.mdx",
     "*.js",
-    "*.ts",
-    "../src/**/*.component.ts",
-    "../src/**/*.component.js",
+    "*.ts"
   ]
 }
