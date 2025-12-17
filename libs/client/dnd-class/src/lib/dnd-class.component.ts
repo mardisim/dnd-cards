@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UICardListComponent } from '@dnd-cards/client-ui';
 import { IDndClassModel as IDndClassesModel } from '@interfaces';
@@ -6,7 +6,7 @@ import { DnDClassStore } from './dnd-class.store';
 
 @Component({
   selector: 'lib-dnd-card',
-  imports: [CommonModule, UICardListComponent],
+  imports: [UICardListComponent],
   templateUrl: 'dnd-class.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
