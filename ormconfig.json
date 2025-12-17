@@ -6,8 +6,12 @@
     "port": 5432,
     "username": "root",
     "password": "root",
-    "database": "",
+    "database": "dnd_cards",
     "synchronize": false,
-    "entities": ["entities/*.entity.js"]
+    "entities": ["apps/api/**/*.entity.js"],
+    "migrations": ["apps/api/src/migrations/*"],
+    "cli": {
+      "migrationsDir": "apps/api/src/migrations"
+    }
   }
 ]

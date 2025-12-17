@@ -1,0 +1,22 @@
+{
+  "name": "tokens",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/tokens/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nxkit/style-dictionary:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{workspaceRoot}/apps/dnd-cards/public/styles/tokens",
+        "styleDictionaryConfig": "apps/tokens/style-dictionary.config.ts",
+        "tsConfig": "apps/tokens/tsconfig.json",
+        "customActions": "apps/tokens/src/extensions/actions/index.ts"
+      }
+    },
+    "lint": {
+      "command": "eslint apps/tokens/**/*.{js,ts}"
+    }
+  }
+}
