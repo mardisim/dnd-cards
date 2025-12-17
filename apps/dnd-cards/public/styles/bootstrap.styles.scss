@@ -1,0 +1,100 @@
+@use 'tokens/scss/variables' as dt;
+
+@import 'bootstrap/scss/functions';
+
+$enable-shadows: true;
+$enable-cssgrid: true;
+$min-contrast-ratio: 3;
+
+$primary: dt.$color-brand-primary-base;
+$secondary: dt.$color-brand-secondary-base;
+
+$blue: dt.$color-base-blue-500;
+$red: dt.$color-base-red-500;
+$yellow: dt.$color-base-yellow-500;
+$green: dt.$color-base-green-500;
+
+$gray-100: dt.$color-base-grey-100;
+$gray-200: dt.$color-base-grey-200;
+$gray-300: dt.$color-base-grey-300;
+$gray-400: dt.$color-base-grey-400;
+$gray-500: dt.$color-base-grey-500;
+$gray-600: dt.$color-base-grey-600;
+$gray-700: dt.$color-base-grey-700;
+$gray-800: dt.$color-base-grey-800;
+$gray-900: dt.$color-base-grey-900;
+
+$border-radius: dt.$border-radius-medium;
+
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    primary: $primary,
+    secondary: $secondary,
+  )
+);
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, '$value');
+
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
+
+$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
+$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, '$key', 'text');
+$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, '$key', 'bg');
+
+// $btn-box-shadow: dt.$shadow-base;
+// $btn-font-size: dt.$size-font-base;
+// $btn-font-size-lg: dt.$size-font-base;
+// $btn-padding-y: dt.$size-spacing-sm;
+// $btn-padding-x: dt.$size-spacing-lg;
+// $btn-disabled-color: dt.$color-white-base;
+
+// $btn-close-width: 1em;
+// $btn-close-padding-x: 0;
+// $btn-close-color: dt.$color-white-base;
+// $btn-close-opacity: 1;
+// $btn-disabled-opacity: 0.75;
+
+// $input-placeholder-color: dt.$color-grey-600;
+// $input-box-shadow: dt.$shadow-base;
+// $input-font-size-lg: dt.$size-font-base;
+// $input-height-inner: dt.$size-font-xxxl;
+// $input-height-lg: dt.$size-font-xxxl;
+// $input-border-color: dt.$color-grey-lighter;
+// $input-focus-box-shadow: dt.$shadow-base;
+// $input-focus-border-color: dt.$color-brand-primary-base;
+
+// $form-check-input-width: 1rem;
+// $form-check-input-border: 1px solid dt.$color-brand-primary-base;
+// $form-check-input-checked-border-color: dt.$color-brand-primary-base;
+// $form-check-input-checked-bg-color: dt.$color-brand-primary-base;
+// $form-check-input-indeterminate-bg-color: dt.$color-brand-primary-base;
+// $form-check-input-indeterminate-border-color: dt.$color-brand-primary-base;
+
+// $form-select-box-shadow: dt.$shadow-base;
+
+// $card-box-shadow: dt.$shadow-base;
+// $card-spacer-y: dt.$size-spacing-sm;
+// $card-spacer-x: dt.$size-spacing-lg;
+// $card-border-width: 0;
+// $card-inner-border-radius: dt.$size-border-radius-base;
+// $card-bg: dt.$color-grey-lighter;
+
+// $modal-content-border-radius: dt.$size-border-radius-base;
+
+// $nav-link-font-size: dt.$size-font-md;
+
+@import 'bootstrap/scss/bootstrap';
+
+@import 'bootstrap-icons/font/bootstrap-icons.scss';
+
+:root {
+  --test: #{dt.$color-brand-primary-base};
+}

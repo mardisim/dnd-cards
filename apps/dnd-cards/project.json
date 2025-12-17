@@ -13,11 +13,10 @@
         "outputPath": "dist/apps/dnd-cards/browser",
         "index": "apps/dnd-cards/src/index.html",
         "main": "apps/dnd-cards/src/main.ts",
-        "polyfills": ["zone.js"],
         "tsConfig": "apps/dnd-cards/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "stylePreprocessorOptions": {
-          "includePaths": ["apps/dnd-cards/public", "libs/tokens/out/dnd-cards"]
+          "includePaths": ["apps/dnd-cards/public"]
         },
         "assets": [
           {
@@ -25,11 +24,7 @@
             "input": "apps/dnd-cards/public"
           }
         ],
-        "styles": [
-          "apps/dnd-cards/src/styles.scss",
-          "node_modules/bootstrap/scss/bootstrap.scss",
-          "node_modules/bootstrap-icons/font/bootstrap-icons.scss"
-        ],
+        "styles": ["apps/dnd-cards/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -49,12 +44,9 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "optimization": false,
+          "sourceMap": true
         }
       },
       "defaultConfiguration": "production"

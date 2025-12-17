@@ -12,7 +12,8 @@
         "outputPath": "{workspaceRoot}/apps/dnd-cards/public/styles/tokens",
         "styleDictionaryConfig": "apps/tokens/style-dictionary.config.ts",
         "tsConfig": "apps/tokens/tsconfig.json",
-        "customActions": "apps/tokens/src/extensions/actions/index.ts"
+        "customActions": "apps/tokens/src/extensions/actions/index.ts",
+        "customTransforms": "apps/tokens/src/extensions/transforms/index.ts"
       }
     },
     "lint": {
