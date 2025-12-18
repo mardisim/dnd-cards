@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UICardListComponent } from '@dnd-cards/client-ui';
 import { IDndClassModel as IDndClassesModel } from '@interfaces';
@@ -24,7 +23,9 @@ export class DnDClassComponent {
 
   updateDnDClassesList(event: Event) {
     const dndClassesID = (event.target as HTMLInputElement).value;
-    const currentClass = this.dndClasses().find((dndClasses: IDndClassesModel) => dndClasses.id === dndClassesID);
+    const currentClass = this.dndClasses().find(
+      (dndClasses: IDndClassesModel) => dndClasses.id === dndClassesID,
+    );
     if (currentClass) {
       this.dndClass = currentClass.name.toLowerCase();
     }

@@ -24,8 +24,9 @@ export const DnDClassStore = signalStore(
         switchMap(() => {
           return dndClassesService.getAllDnDClasses().pipe(
             tapResponse({
-              next: dndClasses => patchState(store, { dndClasses, isLoading: false }),
-              error: err => {
+              next: (dndClasses) =>
+                patchState(store, { dndClasses, isLoading: false }),
+              error: (err) => {
                 patchState(store, { isLoading: false });
                 console.error(err);
               },
@@ -41,7 +42,11 @@ export const DnDClassStore = signalStore(
         switchMap((dndClassesId: string) => {
           return dndClassesService.getDnDClass(dndClassesId).pipe(
             tapResponse({
-              next: dndClasses => patchState(store, { spells: dndClasses.spells, isLoading: false }),
+              next: (dndClasses) =>
+                patchState(store, {
+                  spells: dndClasses.spells,
+                  isLoading: false,
+                }),
               error: () => {
                 patchState(store, { isLoading: false });
               },

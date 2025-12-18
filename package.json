@@ -3,23 +3,28 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "typeorm:migration:run": "NODE_ENV='development' nx run api:typeorm-migration-run",
-    "typeorm:migration:generate": "NODE_ENV='development' nx run api:typeorm-migration-generate",
-    "typeorm:migration:create": "NODE_ENV='development' nx run api:typeorm-migration-create"
+    "migration:generate": "npx ts-node -P ./libs/server/db/tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./libs/server/db/src/lib/datasource.ts ./data/migrations/",
+    "migration:create": "npx ts-node -P ./libs/server/db/tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./data/migrations/migration",
+    "migration:run": "npx ts-node -P ./libs/server/db/tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./libs/server/db/src/lib/datasource.ts",
+    "migration:revert": "npx ts-node -P ./libs/server/db/tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./libs/server/db/src/lib/datasource.ts",
+    "generate:entities": "typeorm-model-generator -h 127.0.0.1 -d dnd_card -p 5432 -u root -x root -e postgres --case-file none --suffix-file .entity -o ./data/entities"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "21.0.6",
-    "@angular/cdk": "21.0.3",
     "@angular/common": "21.0.6",
     "@angular/compiler": "21.0.6",
     "@angular/core": "21.0.6",
-    "@angular/forms": "21.0.6",
-    "@angular/material": "21.0.3",
     "@angular/platform-browser": "21.0.6",
     "@angular/platform-browser-dynamic": "21.0.6",
     "@angular/platform-server": "21.0.6",
     "@angular/router": "21.0.6",
+    "express": "4.21.2",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@angular/cdk": "21.0.3",
+    "@angular/forms": "21.0.6",
+    "@angular/material": "21.0.3",
     "@angular/ssr": "21.0.3",
     "@material/material-color-utilities": "^0.3.0",
     "@nestjs/common": "^10.0.2",
@@ -30,7 +35,14 @@
     "@nestjs/platform-express": "^10.0.2",
     "@nestjs/swagger": "^8.0.7",
     "@nestjs/typeorm": "^10.0.2",
-    "@ngrx/operators": "^19.1.0",
+    "http-proxy": "^1.18.1",
+    "http-proxy-middleware": "^3.0.3",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
+    "typescript": "5.9.3",
     "@nx/angular": "22.3.0",
     "@nxkit/style-dictionary": "^6.0.0",
     "@prisma/client": "^6.0.0",
@@ -41,22 +53,11 @@
     "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "class-validator": "^0.14.1",
-    "express": "4.21.2",
-    "http-proxy": "^1.18.1",
-    "http-proxy-middleware": "^3.0.3",
-    "passport": "^0.7.0",
-    "passport-jwt": "^4.0.1",
-    "pg": "^8.13.1",
-    "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.0",
-    "typeorm": "^0.3.20",
-    "typescript": "5.9.3"
-  },
-  "devDependencies": {
     "@angular-devkit/build-angular": "21.0.3",
     "@angular-devkit/core": "21.0.3",
     "@angular-devkit/schematics": "21.0.3",
-    "@angular/cli": "~21.0.0",
+    "@angular/build": "^21.0.3",
+    "@angular/cli": "21.0.3",
     "@angular/compiler-cli": "21.0.6",
     "@angular/language-service": "21.0.6",
     "@angular/localize": "21.0.6",
@@ -114,6 +115,7 @@
     "ts-jest": "29.4.6",
     "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
+    "typeorm-model-generator-suffix": "^1.0.6",
     "typescript-eslint": "^8.33.1",
     "webpack-cli": "^5.1.4"
   },
@@ -122,6 +124,7 @@
       "pre-commit": "lint-staged"
     }
   },
+  "nx": {},
   "lint-staged": {
     "*.{js,json,css,scss,md,ts,html,graphql}": [
       "yarn format --uncommitted"

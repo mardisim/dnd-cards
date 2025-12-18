@@ -24,7 +24,10 @@ export class DnDClassesService {
   }
 
   async findRange(take = 10, skip = 0) {
-    const [data, total] = await this.dndClassRepository.findAndCount({ take, skip });
+    const [data, total] = await this.dndClassRepository.findAndCount({
+      take,
+      skip,
+    });
     return { data, total };
   }
 }

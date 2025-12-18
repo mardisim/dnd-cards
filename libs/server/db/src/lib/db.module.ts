@@ -3,12 +3,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Archetypes } from './entities/archetypes.entity';
 import { Books } from './entities/books.entity';
-import { Characters } from './entities/character.entity';
-import { DndClasses } from './entities/dndclasses.entity';
-import { DndClassesSpells } from './entities/dndclassesspells.entity';
+import { Characters } from './entities/characters.entity';
+import { DndClasses } from './entities/dnd_classes.entity';
+import { DndClassesSpells } from './entities/dnd_classes_spells.entity';
 import { Schools } from './entities/schools.entity';
 import { Spells } from './entities/spells.entity';
-import { SpellsBooks } from './entities/spellsbooks.entity';
+import { SpellsBooks } from './entities/spells_books.entity';
 import { Users } from './entities/users.entity';
 
 @Module({
@@ -24,7 +24,17 @@ import { Users } from './entities/users.entity';
         username: configService.get('POSTGRES_DB_USERNAME', 'root'),
         password: configService.get('POSTGRES_DB_PASSWORD', 'root'),
         database: configService.get('POSTGRES_NAME', 'dnd_cards'),
-        entities: [Archetypes, Books, Characters, DndClasses, DndClassesSpells, Schools, SpellsBooks, Spells, Users],
+        entities: [
+          Archetypes,
+          Books,
+          Characters,
+          DndClasses,
+          DndClassesSpells,
+          Schools,
+          SpellsBooks,
+          Spells,
+          Users,
+        ],
       }),
     }),
   ],

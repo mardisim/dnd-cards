@@ -16,5 +16,6 @@
         "markdown": false,
         "scminput": false
     },
-    "nxConsole.generateAiAgentRules": true
+    "nxConsole.generateAiAgentRules": true,
+    "vsicons.presets.angular": true
 }

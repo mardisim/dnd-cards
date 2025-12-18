@@ -6,13 +6,14 @@ import { Spells } from './spells.entity';
 export class Schools {
   @Column('uuid', {
     primary: true,
+    name: 'id',
     default: () => 'gen_random_uuid()',
   })
   id!: string;
 
-  @Column('character', { length: 25 })
+  @Column('character varying', { name: 'name' })
   name!: string;
 
-  @OneToMany(() => Spells, spells => spells.schools)
+  @OneToMany(() => Spells, (spells) => spells.schools)
   spells!: Spells[];
 }

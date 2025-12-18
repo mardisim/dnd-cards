@@ -1,6 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsNumberString, IsString } from 'class-validator';
-import { DndClasses } from '../entities/dndclasses.entity';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumberString,
+  IsString,
+} from 'class-validator';
+import { DndClasses } from '../entities/dnd_classes.entity';
 import { Schools } from '../entities/schools.entity';
 
 export class SpellDto {
